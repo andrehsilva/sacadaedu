@@ -1,0 +1,10 @@
+# Arquivos de ambiente
+.env
+
+# Banco de dados SQLite
+*.db
+*.db-journal
+
+# Outros
+__pycache__/
+*.pyc

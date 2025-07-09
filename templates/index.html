@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SacadaEdu | Tecnologia educacional com propósito humano</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#f0f9ff', 100: '#e0f2fe', 200: '#bae6fd', 300: '#7dd3fc', 400: '#38bdf8',
+              500: '#0ea5e9', 600: '#0284c7', 700: '#0369a1', 800: '#075985', 900: '#0c4a6e',
+            },
+            secondary: {
+              50: '#fff7ed', 100: '#ffedd5', 200: '#fed7aa', 300: '#fdba74', 400: '#fb923c',
+              500: '#f97316', 600: '#ea580c', 700: '#c2410c', 800: '#9a3412', 900: '#7c2d12',
+            },
+          },
+          fontFamily: {
+            sans: ['DM Sans', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    .gradient-text {
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      background-image: linear-gradient(90deg, #0ea5e9, #f97316);
+    }
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+    @keyframes floating {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+  </style>
+</head>
+
+<body class="font-sans antialiased text-gray-800 bg-gray-50">
+
+  <header class="bg-white shadow-md sticky top-0 z-50">
+  <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+    
+    <a href="#" class="flex items-center space-x-3">
+      <div class="bg-primary-600 text-white p-2 rounded-xl shadow-sm">
+        <i class="fas fa-lightbulb text-xl"></i>
+      </div>
+      <span class="text-2xl font-bold text-gray-800">
+        Sacada<span class="text-primary-600">Edu</span>
+      </span>
+    </a>
+
+    <nav class="hidden md:flex items-center space-x-8">
+      <a href="#quem-somos" class="text-gray-700 font-medium hover:text-primary-600 transition duration-300 relative group">
+        <span>Sobre</span>
+        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 transition-all duration-300 group-hover:w-full"></span>
+      </a>
+      <a href="#servicos" class="text-gray-700 font-medium hover:text-primary-600 transition duration-300 relative group">
+        <span>Serviços</span>
+        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 transition-all duration-300 group-hover:w-full"></span>
+      </a>
+      <a href="#formulario" class="bg-primary-600 hover:bg-primary-700 text-white font-semibold py-2.5 px-6 rounded-xl shadow transition-all duration-300 transform hover:scale-105">
+        Conversar com especialista
+      </a>
+    </nav>
+
+    <button class="md:hidden text-gray-600 focus:outline-none">
+      <i class="fas fa-bars text-2xl"></i>
+    </button>
+    
+  </div>
+</header>
+  <main>
+    <section class="relative bg-gradient-to-br from-primary-700 to-primary-900 text-white overflow-hidden">
+      <div class="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4yIj48cGF0aCBkPSJNMzYgMzRjMC0yLjIgMS44LTQgNC00czQgMS44IDQgNC0xLjggNC00IDQtNC0xLjgtNC00eiIvPjwvZz48L2c+PC9zdmc+')]"></div>
+      <div class="container mx-auto px-6 py-24 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center">
+          <div class="lg:w-1/2 mb-12 lg:mb-0">
+            <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">Potencialize sua escola com <span class="gradient-text font-extrabold">Inteligência Artificial</span></h1>
+            <p class="text-xl text-primary-100 mb-8">Integre áreas, automatize tarefas e transforme processos como matrícula e atendimento, ganhando tempo para focar no essencial.</p>
+            <a href="#formulario" class="bg-secondary-500 hover:bg-secondary-600 text-white font-semibold py-4 px-8 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 inline-flex items-center justify-center gap-2">
+              <i class="fab fa-whatsapp"></i>
+              <span>Quero conhecer mais!</span>
+            </a>
+          </div>
+          <div class="lg:w-1/2 flex justify-center">
+            <div class="relative w-full max-w-md floating">
+              <div class="absolute -top-10 -left-10 w-32 h-32 bg-secondary-400 rounded-full opacity-20"></div>
+              <div class="absolute -bottom-10 -right-10 w-32 h-32 bg-primary-400 rounded-full opacity-20"></div>
+              <div class="relative bg-white rounded-2xl shadow-2xl overflow-hidden w-full max-w-xs mx-auto">
+                <div class="bg-primary-600 p-3 text-white flex items-center">
+                  <img src="https://ui-avatars.com/api/?name=Atendimento&background=0ea5e9&color=fff&size=40" alt="Avatar Atendimento" class="rounded-full w-8 h-8">
+                  <div class="ml-3">
+                    <p class="font-semibold">Atendimento Automatizado</p>
+                    <p class="text-xs opacity-80">Online</p>
+                  </div>
+                </div>
+                <div class="p-4 space-y-3">
+                  <div class="bg-gray-100 rounded-lg p-3 text-sm text-gray-800 max-w-[80%]">Olá! Sou o André, seu assistente. Como posso ajudar com matrículas, mensalidades ou agendamentos?</div>
+                  <div class="flex justify-end"><div class="bg-primary-100 rounded-lg p-3 text-sm text-primary-900 max-w-[80%]">Gostaria de saber sobre vagas para o 5º ano.</div></div>
+                  <div class="bg-gray-100 rounded-lg p-3 text-sm text-gray-800 max-w-[80%]">Temos vagas! Posso enviar o edital e valores ou agendar uma visita?</div>
+                </div>
+                <div class="border-t p-3">
+                  <div class="flex items-center bg-gray-100 rounded-full px-4 py-2">
+                    <i class="far fa-smile text-gray-500 mr-2"></i>
+                    <input type="text" placeholder="Digite uma mensagem..." class="bg-transparent border-none focus:outline-none w-full text-sm">
+                    <i class="fas fa-paper-plane text-primary-600 ml-2"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-gray-300 text-gray-900 py-24">
+      <div class="container mx-auto px-6">
+        <div class="flex flex-col lg:flex-row items-center gap-12">
+          <div class="lg:w-1/2 flex justify-center">
+            <img src="{{ url_for('static', filename='images/1.png') }}" alt="Fluxo de automação escolar" class="rounded-2xl shadow-xl max-w-full w-[480px] floating">
+          </div>
+          <div class="lg:w-1/2">
+            <h2 class="text-4xl md:text-5xl font-bold leading-tight mb-6">Automatize processos com <span class="text-primary-600 font-extrabold">eficiência</span></h2>
+            <p class="text-lg text-gray-700 mb-8">Conecte Drive, Planilhas e outras ferramentas à IA para agilizar a rotina escolar, eliminando retrabalho e tarefas manuais.</p>
+            <ul class="space-y-3 text-base text-gray-800">
+              <li class="flex items-center"><i class="fas fa-check-circle text-primary-500 mr-2"></i> Integração com sistemas internos</li>
+              <li class="flex items-center"><i class="fas fa-check-circle text-primary-500 mr-2"></i> Fluxos automatizados com IA</li>
+              <li class="flex items-center"><i class="fas fa-check-circle text-primary-500 mr-2"></i> Acesso e envio de dados via Drive, WhatsApp e mais</li>
+            </ul>
+            <div class="mt-8">
+              <a href="#formulario" class="inline-block bg-primary-600 hover:bg-primary-700 text-white font-semibold py-4 px-8 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105">Falar com um especialista</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-gray-200 text-gray-900 py-24">
+      <div class="container mx-auto px-6">
+        <div class="flex flex-col lg:flex-row-reverse items-center gap-12">
+          <div class="lg:w-1/2 flex justify-center">
+            <img src="{{ url_for('static', filename='images/2.png') }}" alt="Análise de dados escolar" class="rounded-2xl shadow-xl max-w-full w-[480px] floating">
+          </div>
+          <div class="lg:w-1/2">
+            <h2 class="text-4xl md:text-5xl font-bold leading-tight mb-6">Decisões assertivas com <span class="text-secondary-600 font-extrabold">análise de dados</span></h2>
+            <p class="text-lg text-gray-700 mb-8">Transforme dados em insights. Acompanhe matrículas, evasão, inadimplência e o engajamento dos pais.</p>
+            <ul class="space-y-3 text-base text-gray-800">
+              <li class="flex items-center"><i class="fas fa-check-circle text-secondary-500 mr-2"></i> Painéis personalizados (pedagógico, financeiro, operacional)</li>
+              <li class="flex items-center"><i class="fas fa-check-circle text-secondary-500 mr-2"></i> Integração com planilhas e sistemas internos</li>
+              <li class="flex items-center"><i class="fas fa-check-circle text-secondary-500 mr-2"></i> Alertas inteligentes para decisões rápidas</li>
+              <li class="flex items-center"><i class="fas fa-check-circle text-secondary-500 mr-2"></i> Relatórios automatizados para reuniões</li>
+            </ul>
+            <div class="mt-8">
+              <a href="#formulario" class="inline-block bg-secondary-600 hover:bg-secondary-700 text-white font-semibold py-4 px-8 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105">Quero transformar dados em estratégia</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="quem-somos" class="py-20 bg-white">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <span class="inline-block px-4 py-1 bg-primary-100 text-primary-700 rounded-full text-sm font-semibold mb-4">SOBRE NÓS</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Tecnologia educacional com <span class="text-primary-600">propósito humano</span></h2>
+          <p class="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">Na <strong>SacadaEdu</strong>, acreditamos que a tecnologia deve servir à educação. Usamos IA para otimizar a gestão escolar, permitindo que a escola foque na formação integral dos alunos.</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="bg-gray-100 p-8 rounded-xl hover:shadow-lg transition-all duration-300">
+            <div class="w-14 h-14 bg-primary-100 rounded-lg flex items-center justify-center mb-6"><i class="fas fa-bolt text-primary-600 text-xl"></i></div>
+            <h3 class="text-xl font-bold mb-3">Eficiência com propósito</h3>
+            <p class="text-gray-600">Aumente a produtividade e reduza custos com automações adaptadas ao dia a dia escolar.</p>
+          </div>
+          <div class="bg-gray-100 p-8 rounded-xl hover:shadow-lg transition-all duration-300">
+            <div class="w-14 h-14 bg-secondary-100 rounded-lg flex items-center justify-center mb-6"><i class="fas fa-robot text-secondary-600 text-xl"></i></div>
+            <h3 class="text-xl font-bold mb-3">IA ética e responsável</h3>
+            <p class="text-gray-600">A IA potencializa equipes humanas com segurança, não as substitui.</p>
+          </div>
+          <div class="bg-gray-100 p-8 rounded-xl hover:shadow-lg transition-all duration-300">
+            <div class="w-14 h-14 bg-primary-100 rounded-lg flex items-center justify-center mb-6"><i class="fas fa-chart-line text-primary-600 text-xl"></i></div>
+            <h3 class="text-xl font-bold mb-3">Impacto mensurável</h3>
+            <p class="text-gray-600">Acompanhe resultados em tempo real: mais matrículas, engajamento e tempo livre para educar.</p>
+          </div>
+        </div>
+        <div class="text-center mt-12 mb-6">
+          <button id="openAboutModalBtn" class="inline-block bg-primary-600 hover:bg-primary-700 text-white font-semibold py-4 px-8 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105">Conheça mais a SacadaEdu</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicos" class="py-20 bg-gray-100">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <span class="inline-block px-4 py-1 bg-secondary-100 text-secondary-700 rounded-full text-sm font-semibold mb-4">NOSSOS SERVIÇOS</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Soluções completas para <span class="text-secondary-600">escolas inteligentes</span></h2>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">Oferecemos tecnologia, estratégia e eficiência para transformar a rotina escolar.</p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="group bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition border-l-4 border-primary-600">
+            <div class="flex items-start gap-4"><div class="bg-primary-100 p-3 rounded-lg text-primary-600 group-hover:bg-primary-600 group-hover:text-white transition"><i class="fas fa-comments text-xl"></i></div><div><h3 class="text-lg font-bold mb-1">Atendimento automatizado</h3><p class="text-gray-600 text-sm leading-relaxed">Comunicação para responder dúvidas, enviar documentos e mais.</p></div></div>
+          </div>
+          <div class="group bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition border-l-4 border-green-500">
+            <div class="flex items-start gap-4"><div class="bg-green-100 p-3 rounded-lg text-green-600 group-hover:bg-green-600 group-hover:text-white transition"><i class="fas fa-database text-xl"></i></div><div><h3 class="text-lg font-bold mb-1">Central de dados</h3><p class="text-gray-600 text-sm">Coleta, análise e relatórios para decisões estratégicas.</p></div></div>
+          </div>
+          <div class="group bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition border-l-4 border-primary-600">
+            <div class="flex items-start gap-4"><div class="bg-primary-100 p-3 rounded-lg text-primary-600 group-hover:bg-primary-600 group-hover:text-white transition"><i class="fas fa-random text-xl"></i></div><div><h3 class="text-lg font-bold mb-1">Automação de fluxos</h3><p class="text-gray-600 text-sm">Integração entre setores e sistemas com processos automáticos.</p></div></div>
+          </div>
+          <div class="group bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition border-l-4 border-secondary-600">
+            <div class="flex items-start gap-4"><div class="bg-secondary-100 p-3 rounded-lg text-secondary-600 group-hover:bg-secondary-600 group-hover:text-white transition"><i class="fas fa-brain text-xl"></i></div><div><h3 class="text-lg font-bold mb-1">Consultoria em IA</h3><p class="text-gray-600 text-sm">Mapeamento e implementação de soluções com IA.</p></div></div>
+          </div>
+          <div class="group bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition border-l-4 border-primary-500">
+            <div class="flex items-start gap-4"><div class="bg-primary-100 p-3 rounded-lg text-primary-600 group-hover:bg-primary-600 group-hover:text-white transition"><i class="fas fa-folder-tree text-xl"></i></div><div><h3 class="text-lg font-bold mb-1">Sistemas unificados</h3><p class="text-gray-600 text-sm">Centralize arquivos e processos em uma plataforma interna.</p></div></div>
+          </div>
+          <div class="group bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition border-l-4 border-secondary-500">
+            <div class="flex items-start gap-4"><div class="bg-secondary-100 p-3 rounded-lg text-secondary-600 group-hover:bg-secondary-600 group-hover:text-white transition"><i class="fas fa-paint-brush text-xl"></i></div><div><h3 class="text-lg font-bold mb-1">Presença digital</h3><p class="text-gray-600 text-sm">Marca, site e redes sociais para o posicionamento da escola.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="processo" class="py-20 bg-white">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <span class="inline-block px-4 py-1 bg-primary-100 text-primary-700 rounded-full text-sm font-semibold mb-4">COMO FUNCIONA</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Implementação <span class="text-primary-600">simples e eficaz</span></h2>
+        </div>
+        <div class="relative">
+          <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-primary-500 to-secondary-500 transform -translate-x-1/2"></div>
+          <div class="space-y-12 md:space-y-0">
+            <div class="relative flex flex-col md:flex-row items-center">
+              <div class="flex-1 md:pr-12 mb-8 md:mb-0 md:text-right"><h3 class="text-xl font-bold mb-3">1. Diagnóstico Personalizado</h3><p class="text-gray-600">Mapeamos os fluxos e processos internos da sua escola.</p></div>
+              <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary-100 border-4 border-white shadow-md flex items-center justify-center text-primary-600 font-bold text-xl">1</div>
+              <div class="flex-1 md:pl-12"></div>
+            </div>
+            <div class="relative flex flex-col md:flex-row items-center">
+              <div class="flex-1 md:pr-12"></div>
+              <div class="flex-shrink-0 w-12 h-12 rounded-full bg-secondary-100 border-4 border-white shadow-md flex items-center justify-center text-secondary-600 font-bold text-xl">2</div>
+              <div class="flex-1 md:pl-12 mt-8 md:mt-0"><h3 class="text-xl font-bold mb-3">2. Prototipagem Ágil</h3><p class="text-gray-600">Em até 2 semanas, entregamos uma versão piloto para validação.</p></div>
+            </div>
+            <div class="relative flex flex-col md:flex-row items-center">
+              <div class="flex-1 md:pr-12 mb-8 md:mb-0 md:text-right"><h3 class="text-xl font-bold mb-3">3. Treinamento e Ajustes</h3><p class="text-gray-600">Capacitamos sua equipe e ajustamos a solução com base no feedback.</p></div>
+              <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary-100 border-4 border-white shadow-md flex items-center justify-center text-primary-600 font-bold text-xl">3</div>
+              <div class="flex-1 md:pl-12"></div>
+            </div>
+            <div class="relative flex flex-col md:flex-row items-center">
+              <div class="flex-1 md:pr-12"></div>
+              <div class="flex-shrink-0 w-12 h-12 rounded-full bg-secondary-100 border-4 border-white shadow-md flex items-center justify-center text-secondary-600 font-bold text-xl">4</div>
+              <div class="flex-1 md:pl-12 mt-8 md:mt-0"><h3 class="text-xl font-bold mb-3">4. Monitoramento Contínuo</h3><p class="text-gray-600">Acompanhamos os resultados para garantir máxima eficiência.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="beneficios" class="py-20 bg-gradient-to-br from-primary-700 to-primary-900 text-white">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <span class="inline-block px-4 py-1 bg-white bg-opacity-20 rounded-full text-sm font-semibold mb-4">RESULTADOS REAIS</span>
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">Transformação <span class="text-secondary-300">mensurável</span></h2>
+          <p class="text-lg text-white text-opacity-80 max-w-2xl mx-auto">Nossa tecnologia entrega resultados rápidos na rotina, no atendimento e na gestão.</p>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
+          <div class="bg-white bg-opacity-10 p-8 rounded-xl backdrop-blur-sm border border-white border-opacity-20">
+            <div class="text-4xl font-extrabold text-secondary-300 mb-4">40%</div>
+            <h3 class="text-xl font-semibold mb-2">Menos custos</h3>
+            <p class="text-white text-opacity-80">Reduza despesas com a automação de processos manuais.</p>
+          </div>
+          <div class="bg-white bg-opacity-10 p-8 rounded-xl backdrop-blur-sm border border-white border-opacity-20">
+            <div class="text-4xl font-extrabold text-secondary-300 mb-4">24/7</div>
+            <h3 class="text-xl font-semibold mb-2">Atendimento contínuo</h3>
+            <p class="text-white text-opacity-80">Pais e alunos atendidos a qualquer hora com agilidade.</p>
+          </div>
+          <div class="bg-white bg-opacity-10 p-8 rounded-xl backdrop-blur-sm border border-white border-opacity-20">
+            <div class="text-4xl font-extrabold text-secondary-300 mb-4">3x</div>
+            <h3 class="text-xl font-semibold mb-2">Mais conversões</h3>
+            <p class="text-white text-opacity-80">Aumente as matrículas com leads mais bem nutridos.</p>
+          </div>
+          <div class="bg-white bg-opacity-10 p-8 rounded-xl backdrop-blur-sm border border-white border-opacity-20">
+            <div class="text-4xl font-extrabold text-secondary-300 mb-4">+90%</div>
+            <h3 class="text-xl font-semibold mb-2">Satisfação</h3>
+            <p class="text-white text-opacity-80">Ganhe reconhecimento com mais agilidade e clareza.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="planos" class="py-20 bg-gray-100">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <span class="inline-block px-4 py-1 bg-secondary-100 text-secondary-700 rounded-full text-sm font-semibold mb-4">PARA SUA REALIDADE</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Solução sob medida para <span class="text-secondary-600">sua escola</span></h2>
+          <p class="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">Não oferecemos pacotes prontos, mas projetos personalizados, criados a partir da sua necessidade real.</p>
+        </div>
+        <div class="max-w-4xl mx-auto bg-white p-10 rounded-xl shadow-md border border-gray-200 text-center">
+          <h3 class="text-2xl font-bold text-gray-800 mb-4">Tudo adaptado ao seu contexto.</h3>
+          <p class="text-gray-600 mb-6">Nosso time escuta, entende e monta com você a melhor jornada de transformação digital.</p>
+          <a href="#formulario" class="inline-block bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300">Falar com um especialista</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="formulario" class="py-20 bg-gradient-to-br from-primary-600 to-primary-800 text-white">
+      <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden md:flex">
+          <div class="md:w-1/2 bg-primary-700 p-12 flex flex-col justify-center">
+            <h2 class="text-3xl font-bold mb-4">Pronto para transformar sua escola?</h2>
+            <p class="mb-6 text-primary-100">Preencha o formulário e nossa equipe entrará em contato!</p>
+            <ul class="space-y-3">
+              <li class="flex items-center"><i class="fas fa-check-circle text-secondary-400 mr-3"></i><span>Análise conjunta para sua instituição.</span></li>
+              <li class="flex items-center"><i class="fas fa-check-circle text-secondary-400 mr-3"></i><span>Sem planos prontos, sem compromisso.</span></li>
+            </ul>
+          </div>
+          <div class="md:w-1/2 p-12">
+            <form action="/submit" method="POST" class="space-y-6 text-gray-900">
+              <div>
+                <label for="nome" class="block text-gray-700 font-medium mb-2">Seu nome</label>
+                <input type="text" id="nome" name="nome" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-600" placeholder="Seu nome completo" required>
+              </div>
+              <div>
+                <label for="escola" class="block text-gray-700 font-medium mb-2">Nome da escola</label>
+                <input type="text" id="escola" name="escola" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-600" placeholder="Ex: Colégio Futuro" required>
+              </div>
+              <div>
+                <label for="whatsapp" class="block text-gray-700 font-medium mb-2">WhatsApp para contato</label>
+                <input type="tel" id="whatsapp" name="whatsapp" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-600" placeholder="(XX) XXXXX-XXXX" required>
+              </div>
+              <div>
+                <label for="email" class="block text-gray-700 font-medium mb-2">E-mail profissional</label>
+                <input type="email" id="email" name="email" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-600" placeholder="seu@escola.com" required>
+                <span id="email-error" class="text-red-500 text-sm mt-1 hidden">Por favor, insira um e-mail válido.</span>
+              </div>
+              <div>
+                <button type="submit" class="w-full bg-secondary-500 hover:bg-secondary-600 text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 inline-flex items-center justify-center gap-2">
+                  <i class="fab fa-whatsapp"></i>
+                  <span>Fale conosco</span>
+                </button>
+              </div>
+              <p class="text-gray-500 text-sm text-center">Ao enviar, você concorda com nossa <a href="#" class="text-primary-600 hover:underline">Política de Privacidade</a>.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="py-20 bg-white">
+      <div class="container mx-auto px-6 max-w-4xl">
+        <div class="text-center mb-16">
+          <span class="inline-block px-4 py-1 bg-primary-100 text-primary-700 rounded-full text-sm font-semibold mb-4">DÚVIDAS</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Perguntas <span class="text-primary-600">frequentes</span></h2>
+        </div>
+        <div class="space-y-4" id="faq-container">
+          </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-gray-900 text-gray-400 py-12">
+    <div class="container mx-auto px-6">
+      <div class="grid md:grid-cols-3 gap-12">
+        <div>
+          <h3 class="text-white text-lg font-semibold mb-4">SacadaEdu</h3>
+          <p class="mb-4">IA aplicada à educação com propósito humano.</p>
+          <div class="flex space-x-4">
+            <a href="#" aria-label="Facebook" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="YouTube" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-white text-lg font-semibold mb-4">Links Úteis</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-white transition-colors">Blog</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Cases de Sucesso</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Materiais Gratuitos</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Trabalhe Conosco</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-white text-lg font-semibold mb-4">Contato</h3>
+          <ul class="space-y-2">
+            <li class="flex items-center"><i class="fas fa-envelope mr-3"></i>contato@automatizesuaescola.com.br</li>
+            <li class="flex items-center"><i class="fab fa-whatsapp mr-3"></i>(11) 98765-4321</li>
+            <li class="flex items-center"><i class="fas fa-map-marker-alt mr-3"></i>São Paulo - SP</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-12 pt-8 text-sm text-center">
+        <p>&copy; 2025 SacadaEdu. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div id="aboutModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div class="bg-white rounded-xl max-w-4xl w-full mx-4 p-8 relative shadow-xl max-h-[95vh] overflow-y-auto">
+      <button id="closeAboutModalBtn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition" aria-label="Fechar modal">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+      </button>
+      <div class="px-2">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">Sobre a SacadaEdu</h2>
+        <p class="text-gray-700 leading-relaxed mb-6">No universo da educação, desafios diários exigem inovação e eficiência. Por isso, escolas buscam unir tecnologia, dados e experiência do usuário para simplificar operações complexas.</p>
+        <p class="text-gray-700 leading-relaxed mb-6">Essa transformação é fruto de projetos de automação que conectam sistemas, facilitam a comunicação e potencializam decisões estratégicas baseadas em dados reais, com ferramentas que viabilizam análises inteligentes.</p>
+        <p class="text-gray-700 leading-relaxed mb-8">Com abordagem orientada a dados e foco na experiência, a gestão de produtos digitais na educação integra metodologias ágeis para garantir que a tecnologia se traduza em benefícios reais, como agilidade e maior engajamento da comunidade escolar.</p>
+        <h3 class="text-2xl font-semibold text-gray-900 mb-4">Pensando nisso, nasceu a SacadaEdu</h3>
+        <p class="text-gray-700 leading-relaxed">Uma iniciativa focada em apoiar escolas com tecnologia de ponta, oferecendo ferramentas e processos otimizados para transformar a rotina escolar com mais eficiência e alinhamento às suas necessidades.</p>
+      </div>
+    </div>
+  </div>
+  
+  <div id="successModal" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden">
+    <div class="bg-white rounded-xl max-w-sm w-full mx-4 p-8 text-center shadow-2xl">
+      <div class="mx-auto flex items-center justify-center h-20 w-20 rounded-full bg-green-100 mb-6">
+        <svg class="h-12 w-12 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+      </div>
+      <h2 class="text-2xl font-bold text-gray-800 mb-3">Obrigado!</h2>
+      <p class="text-gray-600 mb-8">Recebemos suas informações. Nossa equipe entrará em contato em breve.</p>
+      <button id="closeSuccessModalBtn" class="bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-8 rounded-lg w-full transition-all">Fechar</button>
+    </div>
+  </div>
+
+    <script>
+  document.addEventListener('DOMContentLoaded', () => {
+
+    // =================================================================
+    // SETUP: Seleção de Elementos do DOM e Configurações Iniciais
+    // =================================================================
+
+    // Elementos do Formulário e Validação
+    const contactForm = document.querySelector('#formulario form');
+    const whatsappInput = document.getElementById('whatsapp');
+    const emailInput = document.getElementById('email');
+    const emailError = document.getElementById('email-error');
+
+    // Elementos dos Modais
+    const aboutModal = document.getElementById('aboutModal');
+    const successModal = document.getElementById('successModal');
+    const openAboutModalBtn = document.getElementById('openAboutModalBtn');
+    const closeAboutModalBtn = document.getElementById('closeAboutModalBtn');
+    const closeSuccessModalBtn = document.getElementById('closeSuccessModalBtn');
+
+    // Elementos do FAQ
+    const faqContainer = document.getElementById('faq-container');
+    const faqData = [
+      { q: 'Mas afinal, o que estou contratando?', a: 'Uma solução personalizada para sua necessidade: consultoria estratégica, automação de processos ou a conexão de ferramentas como Drive, Planilhas e IA, tudo adaptado à realidade da sua escola.' },
+      { q: 'Preciso ter conhecimento técnico para usar?', a: 'Não. Nós cuidamos de toda a implementação e fornecemos treinamento completo para sua equipe, com suporte contínuo para qualquer dúvida ou ajuste.' },
+      { q: 'A IA vai substituir minha equipe?', a: 'Não. Nossa solução é projetada para eliminar tarefas repetitivas, permitindo que sua equipe se concentre no atendimento humanizado e em atividades estratégicas.' },
+      { q: 'Quanto tempo leva para implementar?', a: 'O tempo varia. Soluções simples podem levar 2 semanas, enquanto as mais completas, de 4 a 6 semanas. Respeitamos o ritmo e as necessidades de cada escola.' },
+      { q: 'Preciso investir em infraestrutura complexa?', a: 'Não para soluções simples. Para demandas maiores, nossa equipe avalia e orienta sobre a melhor estrutura, sempre de acordo com a sua realidade.' },
+      { q: 'Como é garantida a segurança dos dados?', a: 'Utilizamos criptografia de ponta a ponta, servidores em território nacional e seguimos rigorosamente a LGPD. Os dados são propriedade exclusiva da sua escola.' }
+    ];
+
+    // =================================================================
+    // FUNÇÕES: Lógica Reutilizável
+    // =================================================================
+
+    /** Abre um modal especificado. */
+    const openModal = (modal) => modal.classList.remove('hidden');
+
+    /** Fecha um modal especificado. */
+    const closeModal = (modal) => modal.classList.add('hidden');
+
+    /** Alterna a visibilidade de um item do FAQ. */
+    const toggleFaq = (button) => {
+      const content = button.nextElementSibling;
+      const icon = button.querySelector('i');
+      content.classList.toggle('hidden');
+      icon.classList.toggle('fa-chevron-down');
+      icon.classList.toggle('fa-chevron-up');
+    };
+
+    /** Valida o formato de um e-mail. */
+    const validateEmail = (email) => {
+      const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(String(email).toLowerCase());
+    };
+
+    /** Aplica a máscara de telefone (XX) XXXXX-XXXX. */
+    const applyPhoneMask = (e) => {
+      let value = e.target.value.replace(/\D/g, '').substring(0, 11);
+      let formattedValue = '';
+      if (value.length > 0) formattedValue = `(${value.substring(0, 2)}`;
+      if (value.length > 2) formattedValue += `) ${value.substring(2, 7)}`;
+      if (value.length > 7) formattedValue += `-${value.substring(7, 11)}`;
+      e.target.value = formattedValue;
+    };
+
+    /** Constrói e insere os itens do FAQ na página. */
+    const buildFaq = () => {
+      faqData.forEach(item => {
+        const faqItem = document.createElement('div');
+        faqItem.className = 'border border-gray-200 rounded-xl overflow-hidden';
+        faqItem.innerHTML = `
+          <button class="faq-toggle w-full flex justify-between items-center p-6 text-left hover:bg-gray-50 transition-colors">
+            <h3 class="text-lg font-semibold">${item.q}</h3>
+            <i class="fas fa-chevron-down text-primary-600 transition-transform"></i>
+          </button>
+          <div class="faq-content hidden px-6 pb-6 pt-0">
+            <p class="text-gray-600">${item.a}</p>
+          </div>`;
+        faqContainer.appendChild(faqItem);
+      });
+    };
+
+    // =================================================================
+    // INICIALIZAÇÃO E EVENT LISTENERS
+    // =================================================================
+
+    buildFaq();
+
+    faqContainer.addEventListener('click', (e) => {
+      const toggleButton = e.target.closest('.faq-toggle');
+      if (toggleButton) toggleFaq(toggleButton);
+    });
+
+    openAboutModalBtn.addEventListener('click', () => openModal(aboutModal));
+    closeAboutModalBtn.addEventListener('click', () => closeModal(aboutModal));
+    closeSuccessModalBtn.addEventListener('click', () => closeModal(successModal));
+
+    [aboutModal, successModal].forEach(modal => {
+      modal.addEventListener('click', (e) => (e.target === modal) && closeModal(modal));
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (!aboutModal.classList.contains('hidden')) closeModal(aboutModal);
+        if (!successModal.classList.contains('hidden')) closeModal(successModal);
+      }
+    });
+
+    whatsappInput.addEventListener('input', applyPhoneMask);
+    emailInput.addEventListener('blur', (e) => {
+      const email = e.target.value;
+      const isValid = !email || validateEmail(email);
+      emailError.classList.toggle('hidden', isValid);
+      emailInput.classList.toggle('border-red-500', !isValid);
+    });
+
+    contactForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+      if (!validateEmail(emailInput.value)) {
+          emailError.classList.remove('hidden');
+          emailInput.focus();
+          return;
+      }
+      const formData = new FormData(contactForm);
+      fetch('/submit', { method: 'POST', body: formData })
+        .then(response => response.json())
+        .then(data => {
+          if (data.status === 'success') {
+            contactForm.reset();
+            emailInput.classList.remove('border-red-500');
+            emailError.classList.add('hidden');
+            openModal(successModal);
+          } else {
+            alert(data.message || 'Ocorreu um erro ao enviar. Tente novamente.');
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('Ocorreu um erro de conexão. Verifique sua internet e tente novamente.');
+        });
+    });
+
+    // Listener para Rolagem Suave dos links de âncora (CORRIGIDO)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+
+        // Se o link for apenas "#", rola para o topo da página
+        if (targetId === '#') {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        } 
+        // Se for um link para uma seção, rola até a seção
+        else if (document.querySelector(targetId)) {
+          document.querySelector(targetId).scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+  });
+</script>
+</body>
+</html>
