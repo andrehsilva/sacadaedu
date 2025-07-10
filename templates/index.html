@@ -10,6 +10,8 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  
   <script src="https://cdn.tailwindcss.com"></script>
   
   <script>
@@ -49,84 +51,151 @@
       50% { transform: translateY(-10px); }
       100% { transform: translateY(0px); }
     }
+    /* Estilos para a paginação do Swiper adicionados */
+    .swiper-pagination-bullet { 
+      background-color: #fff; 
+      opacity: 0.6; 
+      width: 10px; 
+      height: 10px; 
+      transition: all 0.3s; 
+    }
+    .swiper-pagination-bullet-active { 
+      background-color: #f97316; /* Cor secondary-500 */
+      opacity: 1; 
+      transform: scale(1.2); 
+    }
   </style>
 </head>
 
 <body class="font-sans antialiased text-gray-800 bg-gray-50">
 
   <header class="bg-white shadow-md sticky top-0 z-50">
-  <div class="container mx-auto px-6 py-4 flex items-center justify-between">
-    
-    <a href="#" class="flex items-center space-x-3">
-      <div class="bg-primary-600 text-white p-2 rounded-xl shadow-sm">
-        <i class="fas fa-lightbulb text-xl"></i>
-      </div>
-      <span class="text-2xl font-bold text-gray-800">
-        Sacada<span class="text-primary-600">Edu</span>
-      </span>
-    </a>
+    <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+      
+      <a href="#" class="flex items-center space-x-3">
+        <div class="bg-primary-600 text-white p-2 rounded-xl shadow-sm">
+          <i class="fas fa-lightbulb text-xl"></i>
+        </div>
+        <span class="text-2xl font-bold text-gray-800">
+          Sacada<span class="text-primary-600">Edu</span>
+        </span>
+      </a>
 
-    <nav class="hidden md:flex items-center space-x-8">
-      <a href="#quem-somos" class="text-gray-700 font-medium hover:text-primary-600 transition duration-300 relative group">
-        <span>Sobre</span>
-        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 transition-all duration-300 group-hover:w-full"></span>
-      </a>
-      <a href="#servicos" class="text-gray-700 font-medium hover:text-primary-600 transition duration-300 relative group">
-        <span>Serviços</span>
-        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 transition-all duration-300 group-hover:w-full"></span>
-      </a>
-      <a href="#formulario" class="bg-primary-600 hover:bg-primary-700 text-white font-semibold py-2.5 px-6 rounded-xl shadow transition-all duration-300 transform hover:scale-105">
-        Conversar com especialista
-      </a>
-    </nav>
+      <nav class="hidden md:flex items-center space-x-8">
+        <a href="#quem-somos" class="text-gray-700 font-medium hover:text-primary-600 transition duration-300 relative group">
+          <span>Sobre</span>
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="#servicos" class="text-gray-700 font-medium hover:text-primary-600 transition duration-300 relative group">
+          <span>Serviços</span>
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="#formulario" class="bg-primary-600 hover:bg-primary-700 text-white font-semibold py-2.5 px-6 rounded-xl shadow transition-all duration-300 transform hover:scale-105">
+          Conversar com especialista
+        </a>
+      </nav>
 
-    <button class="md:hidden text-gray-600 focus:outline-none">
-      <i class="fas fa-bars text-2xl"></i>
-    </button>
-    
-  </div>
-</header>
+      <button class="md:hidden text-gray-600 focus:outline-none">
+        <i class="fas fa-bars text-2xl"></i>
+      </button>
+      
+    </div>
+  </header>
+
   <main>
     <section class="relative bg-gradient-to-br from-primary-700 to-primary-900 text-white overflow-hidden">
       <div class="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4yIj48cGF0aCBkPSJNMzYgMzRjMC0yLjIgMS44LTQgNC00czQgMS44IDQgNC0xLjggNC00IDQtNC0xLjgtNC00eiIvPjwvZz48L2c+PC9zdmc+')]"></div>
-      <div class="container mx-auto px-6 py-24 relative z-10">
-        <div class="flex flex-col lg:flex-row items-center">
-          <div class="lg:w-1/2 mb-12 lg:mb-0">
-            <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">Potencialize sua escola com <span class="gradient-text font-extrabold">Inteligência Artificial</span></h1>
-            <p class="text-xl text-primary-100 mb-8">Integre áreas, automatize tarefas e transforme processos como matrícula e atendimento, ganhando tempo para focar no essencial.</p>
-            <a href="#formulario" class="bg-secondary-500 hover:bg-secondary-600 text-white font-semibold py-4 px-8 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 inline-flex items-center justify-center gap-2">
-              <i class="fab fa-whatsapp"></i>
-              <span>Quero conhecer mais!</span>
-            </a>
-          </div>
-          <div class="lg:w-1/2 flex justify-center">
-            <div class="relative w-full max-w-md floating">
-              <div class="absolute -top-10 -left-10 w-32 h-32 bg-secondary-400 rounded-full opacity-20"></div>
-              <div class="absolute -bottom-10 -right-10 w-32 h-32 bg-primary-400 rounded-full opacity-20"></div>
-              <div class="relative bg-white rounded-2xl shadow-2xl overflow-hidden w-full max-w-xs mx-auto">
-                <div class="bg-primary-600 p-3 text-white flex items-center">
-                  <img src="https://ui-avatars.com/api/?name=Atendimento&background=0ea5e9&color=fff&size=40" alt="Avatar Atendimento" class="rounded-full w-8 h-8">
-                  <div class="ml-3">
-                    <p class="font-semibold">Atendimento Automatizado</p>
-                    <p class="text-xs opacity-80">Online</p>
+      
+      <div class="swiper hero-slider">
+        <div class="swiper-wrapper">
+          
+          <div class="swiper-slide">
+            <div class="container mx-auto px-6 py-24 relative z-10">
+              <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-12 lg:mb-0">
+                  <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">Potencialize sua escola com <span class="gradient-text font-extrabold">Inteligência Artificial</span></h1>
+                  <p class="text-xl text-primary-100 mb-8">Integre áreas, automatize tarefas e transforme processos como matrícula e atendimento, ganhando tempo para focar no essencial.</p>
+                  <a href="#formulario" class="bg-secondary-500 hover:bg-secondary-600 text-white font-semibold py-4 px-8 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 inline-flex items-center justify-center gap-2">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>Quero conhecer mais!</span>
+                  </a>
+                </div>
+                <div class="lg:w-1/2 flex justify-center">
+                  <div class="relative w-full max-w-md floating">
+                    <div class="absolute -top-10 -left-10 w-32 h-32 bg-secondary-400 rounded-full opacity-20"></div>
+                    <div class="absolute -bottom-10 -right-10 w-32 h-32 bg-primary-400 rounded-full opacity-20"></div>
+                    <div class="relative bg-white rounded-2xl shadow-2xl overflow-hidden w-full max-w-xs mx-auto">
+                      <div class="bg-primary-600 p-3 text-white flex items-center">
+                        <img src="https://ui-avatars.com/api/?name=Atendimento&background=0ea5e9&color=fff&size=40" alt="Avatar Atendimento" class="rounded-full w-8 h-8">
+                        <div class="ml-3">
+                          <p class="font-semibold">Atendimento Automatizado</p>
+                          <p class="text-xs opacity-80">Online</p>
+                        </div>
+                      </div>
+                      <div class="p-4 space-y-3">
+                        <div class="bg-gray-100 rounded-lg p-3 text-sm text-gray-800 max-w-[80%]">Olá! Sou o Beto, seu assistente. Como posso ajudar com matrículas, mensalidades ou agendamentos?</div>
+                        <div class="flex justify-end"><div class="bg-primary-100 rounded-lg p-3 text-sm text-primary-900 max-w-[80%]">Gostaria de saber sobre vagas para o 5º ano.</div></div>
+                        <div class="bg-gray-100 rounded-lg p-3 text-sm text-gray-800 max-w-[80%]">Temos vagas! Posso enviar o edital e valores ou agendar uma visita?</div>
+                      </div>
+                      <div class="border-t p-3">
+                        <div class="flex items-center bg-gray-100 rounded-full px-4 py-2">
+                          <i class="far fa-smile text-gray-500 mr-2"></i>
+                          <input type="text" placeholder="Digite uma mensagem..." class="bg-transparent border-none focus:outline-none w-full text-sm">
+                          <i class="fas fa-paper-plane text-primary-600 ml-2"></i>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div class="p-4 space-y-3">
-                  <div class="bg-gray-100 rounded-lg p-3 text-sm text-gray-800 max-w-[80%]">Olá! Sou o André, seu assistente. Como posso ajudar com matrículas, mensalidades ou agendamentos?</div>
-                  <div class="flex justify-end"><div class="bg-primary-100 rounded-lg p-3 text-sm text-primary-900 max-w-[80%]">Gostaria de saber sobre vagas para o 5º ano.</div></div>
-                  <div class="bg-gray-100 rounded-lg p-3 text-sm text-gray-800 max-w-[80%]">Temos vagas! Posso enviar o edital e valores ou agendar uma visita?</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="container mx-auto px-6 py-24 relative z-10">
+              <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-12 lg:mb-0">
+                  <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">Privacidade e agilidade na <span class="gradient-text font-extrabold">palma da mão</span></h1>
+                  <p class="text-xl text-primary-100 mb-8">Garanta que dados sensíveis, como boletins e finanças, sejam acessados apenas por responsáveis autorizados, com verificação de segurança.</p>
+                  <a href="#formulario" class="bg-secondary-500 hover:bg-secondary-600 text-white font-semibold py-4 px-8 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 inline-flex items-center justify-center gap-2">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>Quero conhecer mais!</span>
+                  </a>
                 </div>
-                <div class="border-t p-3">
-                  <div class="flex items-center bg-gray-100 rounded-full px-4 py-2">
-                    <i class="far fa-smile text-gray-500 mr-2"></i>
-                    <input type="text" placeholder="Digite uma mensagem..." class="bg-transparent border-none focus:outline-none w-full text-sm">
-                    <i class="fas fa-paper-plane text-primary-600 ml-2"></i>
+                <div class="lg:w-1/2 flex justify-center">
+                  <div class="relative w-full max-w-md floating">
+                    <div class="absolute -top-10 -left-10 w-32 h-32 bg-secondary-400 rounded-full opacity-20"></div>
+                    <div class="absolute -bottom-10 -right-10 w-32 h-32 bg-primary-400 rounded-full opacity-20"></div>
+                    <div class="relative bg-white rounded-2xl shadow-2xl overflow-hidden w-full max-w-xs mx-auto">
+                      <div class="bg-primary-600 p-3 text-white flex items-center">
+                        <img src="https://ui-avatars.com/api/?name=Secretaria&background=0369a1&color=fff&size=40" alt="Avatar Secretaria" class="rounded-full w-8 h-8">
+                        <div class="ml-3">
+                          <p class="font-semibold">Secretaria Digital</p>
+                          <p class="text-xs opacity-80">Online</p>
+                        </div>
+                      </div>
+                      <div class="p-4 space-y-3 text-left">
+                        <div class="flex justify-end"><div class="bg-primary-100 rounded-lg p-3 text-sm text-primary-900 max-w-[85%]">Olá, Beto. Quero o boletim do 2º bimestre do meu filho, João da Silva.</div></div>
+                        <div class="bg-gray-100 rounded-lg p-3 text-sm text-gray-800 max-w-[85%]">Olá! Para garantir a segurança, por favor, confirme o CPF do responsável financeiro.</div>
+                        <div class="flex justify-end"><div class="bg-primary-100 rounded-lg p-3 text-sm text-primary-900 max-w-[85%]">123.456.789-00</div></div>
+                        <div class="bg-gray-100 rounded-lg p-3 text-sm text-gray-800 max-w-[85%]">Perfeito. Agora, a data de nascimento do João (dd/mm/aaaa).</div>
+                        <div class="flex justify-end"><div class="bg-primary-100 rounded-lg p-3 text-sm text-primary-900 max-w-[85%]">15/03/2010</div></div>
+                        <div class="bg-gray-100 rounded-lg p-3 text-sm text-gray-800 max-w-[95%]">
+                            <p class="mb-2">Obrigado! Verificação concluída. ✅ Aqui está o boletim:</p>
+                            <a href="#" class="inline-flex items-center gap-2 bg-red-600 text-white font-bold py-2 px-3 rounded-lg text-xs hover:bg-red-700 transition-colors">
+                                <i class="fas fa-file-pdf"></i>
+                                <span>Boletim_2Bim_JoaoSilva.pdf</span>
+                            </a>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        <div class="swiper-pagination absolute !bottom-8"></div>
       </div>
     </section>
 
@@ -138,11 +207,11 @@
           </div>
           <div class="lg:w-1/2">
             <h2 class="text-4xl md:text-5xl font-bold leading-tight mb-6">Automatize processos com <span class="text-primary-600 font-extrabold">eficiência</span></h2>
-            <p class="text-lg text-gray-700 mb-8">Conecte Drive, Planilhas e outras ferramentas à IA para agilizar a rotina escolar, eliminando retrabalho e tarefas manuais.</p>
+            <p class="text-lg text-gray-700 mb-8">Conecte drive, planilhas e outras ferramentas à IA para agilizar a rotina escolar, eliminando retrabalho e tarefas manuais.</p>
             <ul class="space-y-3 text-base text-gray-800">
               <li class="flex items-center"><i class="fas fa-check-circle text-primary-500 mr-2"></i> Integração com sistemas internos</li>
               <li class="flex items-center"><i class="fas fa-check-circle text-primary-500 mr-2"></i> Fluxos automatizados com IA</li>
-              <li class="flex items-center"><i class="fas fa-check-circle text-primary-500 mr-2"></i> Acesso e envio de dados via Drive, WhatsApp e mais</li>
+              <li class="flex items-center"><i class="fas fa-check-circle text-primary-500 mr-2"></i> Acesso e envio de dados via drive, whatsApp e mais</li>
             </ul>
             <div class="mt-8">
               <a href="#formulario" class="inline-block bg-primary-600 hover:bg-primary-700 text-white font-semibold py-4 px-8 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105">Falar com um especialista</a>
@@ -252,17 +321,17 @@
             <div class="relative flex flex-col md:flex-row items-center">
               <div class="flex-1 md:pr-12"></div>
               <div class="flex-shrink-0 w-12 h-12 rounded-full bg-secondary-100 border-4 border-white shadow-md flex items-center justify-center text-secondary-600 font-bold text-xl">2</div>
-              <div class="flex-1 md:pl-12 mt-8 md:mt-0"><h3 class="text-xl font-bold mb-3">2. Prototipagem Ágil</h3><p class="text-gray-600">Em até 2 semanas, entregamos uma versão piloto para validação.</p></div>
+              <div class="flex-1 md:pl-12 mt-8 md:mt-0"><h3 class="text-xl font-bold mb-3">2. Prototipagem ágil</h3><p class="text-gray-600">Em até 2 semanas, entregamos uma versão piloto para validação.</p></div>
             </div>
             <div class="relative flex flex-col md:flex-row items-center">
-              <div class="flex-1 md:pr-12 mb-8 md:mb-0 md:text-right"><h3 class="text-xl font-bold mb-3">3. Treinamento e Ajustes</h3><p class="text-gray-600">Capacitamos sua equipe e ajustamos a solução com base no feedback.</p></div>
+              <div class="flex-1 md:pr-12 mb-8 md:mb-0 md:text-right"><h3 class="text-xl font-bold mb-3">3. Treinamento e ajustes</h3><p class="text-gray-600">Capacitamos sua equipe e ajustamos a solução com base no feedback.</p></div>
               <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary-100 border-4 border-white shadow-md flex items-center justify-center text-primary-600 font-bold text-xl">3</div>
               <div class="flex-1 md:pl-12"></div>
             </div>
             <div class="relative flex flex-col md:flex-row items-center">
               <div class="flex-1 md:pr-12"></div>
               <div class="flex-shrink-0 w-12 h-12 rounded-full bg-secondary-100 border-4 border-white shadow-md flex items-center justify-center text-secondary-600 font-bold text-xl">4</div>
-              <div class="flex-1 md:pl-12 mt-8 md:mt-0"><h3 class="text-xl font-bold mb-3">4. Monitoramento Contínuo</h3><p class="text-gray-600">Acompanhamos os resultados para garantir máxima eficiência.</p></div>
+              <div class="flex-1 md:pl-12 mt-8 md:mt-0"><h3 class="text-xl font-bold mb-3">4. Monitoramento contínuo</h3><p class="text-gray-600">Acompanhamos os resultados para garantir máxima eficiência.</p></div>
             </div>
           </div>
         </div>
@@ -274,7 +343,7 @@
         <div class="text-center mb-16">
           <span class="inline-block px-4 py-1 bg-white bg-opacity-20 rounded-full text-sm font-semibold mb-4">RESULTADOS REAIS</span>
           <h2 class="text-3xl md:text-4xl font-bold mb-6">Transformação <span class="text-secondary-300">mensurável</span></h2>
-          <p class="text-lg text-white text-opacity-80 max-w-2xl mx-auto">Nossa tecnologia entrega resultados rápidos na rotina, no atendimento e na gestão.</p>
+          <p class="text-lg text-white text-opacity-80 max-w-2xl mx-auto">Nossa tecnologia entrega resultados rápidos na rotina, no atendimento e na gestão do seu negócio.</p>
         </div>
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
           <div class="bg-white bg-opacity-10 p-8 rounded-xl backdrop-blur-sm border border-white border-opacity-20">
@@ -396,9 +465,9 @@
         <div>
           <h3 class="text-white text-lg font-semibold mb-4">Contato</h3>
           <ul class="space-y-2">
-            <li class="flex items-center"><i class="fas fa-envelope mr-3"></i>contato@automatizesuaescola.com.br</li>
-            <li class="flex items-center"><i class="fab fa-whatsapp mr-3"></i>(11) 98765-4321</li>
-            <li class="flex items-center"><i class="fas fa-map-marker-alt mr-3"></i>São Paulo - SP</li>
+            <li class="flex items-center"><i class="fas fa-envelope mr-3"></i>contato@sacadaedu.com.br</li>
+            <li class="flex items-center"><i class="fab fa-whatsapp mr-3"></i>(16) 99112-2235</li>
+            <li class="flex items-center"><i class="fas fa-map-marker-alt mr-3"></i>Ribeirão Preto - SP</li>
           </ul>
         </div>
       </div>
@@ -435,171 +504,193 @@
     </div>
   </div>
 
-    <script>
-  document.addEventListener('DOMContentLoaded', () => {
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-    // =================================================================
-    // SETUP: Seleção de Elementos do DOM e Configurações Iniciais
-    // =================================================================
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
 
-    // Elementos do Formulário e Validação
-    const contactForm = document.querySelector('#formulario form');
-    const whatsappInput = document.getElementById('whatsapp');
-    const emailInput = document.getElementById('email');
-    const emailError = document.getElementById('email-error');
+      // =================================================================
+      // SETUP: Seleção de Elementos do DOM e Configurações Iniciais
+      // =================================================================
 
-    // Elementos dos Modais
-    const aboutModal = document.getElementById('aboutModal');
-    const successModal = document.getElementById('successModal');
-    const openAboutModalBtn = document.getElementById('openAboutModalBtn');
-    const closeAboutModalBtn = document.getElementById('closeAboutModalBtn');
-    const closeSuccessModalBtn = document.getElementById('closeSuccessModalBtn');
+      // Elementos do Formulário e Validação
+      const contactForm = document.querySelector('#formulario form');
+      const whatsappInput = document.getElementById('whatsapp');
+      const emailInput = document.getElementById('email');
+      const emailError = document.getElementById('email-error');
 
-    // Elementos do FAQ
-    const faqContainer = document.getElementById('faq-container');
-    const faqData = [
-      { q: 'Mas afinal, o que estou contratando?', a: 'Uma solução personalizada para sua necessidade: consultoria estratégica, automação de processos ou a conexão de ferramentas como Drive, Planilhas e IA, tudo adaptado à realidade da sua escola.' },
-      { q: 'Preciso ter conhecimento técnico para usar?', a: 'Não. Nós cuidamos de toda a implementação e fornecemos treinamento completo para sua equipe, com suporte contínuo para qualquer dúvida ou ajuste.' },
-      { q: 'A IA vai substituir minha equipe?', a: 'Não. Nossa solução é projetada para eliminar tarefas repetitivas, permitindo que sua equipe se concentre no atendimento humanizado e em atividades estratégicas.' },
-      { q: 'Quanto tempo leva para implementar?', a: 'O tempo varia. Soluções simples podem levar 2 semanas, enquanto as mais completas, de 4 a 6 semanas. Respeitamos o ritmo e as necessidades de cada escola.' },
-      { q: 'Preciso investir em infraestrutura complexa?', a: 'Não para soluções simples. Para demandas maiores, nossa equipe avalia e orienta sobre a melhor estrutura, sempre de acordo com a sua realidade.' },
-      { q: 'Como é garantida a segurança dos dados?', a: 'Utilizamos criptografia de ponta a ponta, servidores em território nacional e seguimos rigorosamente a LGPD. Os dados são propriedade exclusiva da sua escola.' }
-    ];
+      // Elementos dos Modais
+      const aboutModal = document.getElementById('aboutModal');
+      const successModal = document.getElementById('successModal');
+      const openAboutModalBtn = document.getElementById('openAboutModalBtn');
+      const closeAboutModalBtn = document.getElementById('closeAboutModalBtn');
+      const closeSuccessModalBtn = document.getElementById('closeSuccessModalBtn');
 
-    // =================================================================
-    // FUNÇÕES: Lógica Reutilizável
-    // =================================================================
+      // Elementos do FAQ
+      const faqContainer = document.getElementById('faq-container');
+      const faqData = [
+        { q: 'Mas afinal, o que estou contratando?', a: 'Uma solução personalizada para sua necessidade: consultoria estratégica, automação de processos ou a conexão de ferramentas como Drive, Planilhas e IA, tudo adaptado à realidade da sua escola.' },
+        { q: 'Preciso ter conhecimento técnico para usar?', a: 'Não. Nós cuidamos de toda a implementação e fornecemos treinamento completo para sua equipe, com suporte contínuo para qualquer dúvida ou ajuste.' },
+        { q: 'A IA vai substituir minha equipe?', a: 'Não. Nossa solução é projetada para eliminar tarefas repetitivas, permitindo que sua equipe se concentre no atendimento humanizado e em atividades estratégicas.' },
+        { q: 'Quanto tempo leva para implementar?', a: 'O tempo varia. Soluções simples podem levar 2 semanas, enquanto as mais completas, de 4 a 6 semanas. Respeitamos o ritmo e as necessidades de cada escola.' },
+        { q: 'Preciso investir em infraestrutura complexa?', a: 'Não para soluções simples. Para demandas maiores, nossa equipe avalia e orienta sobre a melhor estrutura, sempre de acordo com a sua realidade.' },
+        { q: 'Como é garantida a segurança dos dados?', a: 'Utilizamos criptografia de ponta a ponta, servidores em território nacional e seguimos rigorosamente a LGPD. Os dados são propriedade exclusiva da sua escola.' }
+      ];
 
-    /** Abre um modal especificado. */
-    const openModal = (modal) => modal.classList.remove('hidden');
+      // =================================================================
+      // FUNÇÕES: Lógica Reutilizável
+      // =================================================================
 
-    /** Fecha um modal especificado. */
-    const closeModal = (modal) => modal.classList.add('hidden');
-
-    /** Alterna a visibilidade de um item do FAQ. */
-    const toggleFaq = (button) => {
-      const content = button.nextElementSibling;
-      const icon = button.querySelector('i');
-      content.classList.toggle('hidden');
-      icon.classList.toggle('fa-chevron-down');
-      icon.classList.toggle('fa-chevron-up');
-    };
-
-    /** Valida o formato de um e-mail. */
-    const validateEmail = (email) => {
-      const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      return re.test(String(email).toLowerCase());
-    };
-
-    /** Aplica a máscara de telefone (XX) XXXXX-XXXX. */
-    const applyPhoneMask = (e) => {
-      let value = e.target.value.replace(/\D/g, '').substring(0, 11);
-      let formattedValue = '';
-      if (value.length > 0) formattedValue = `(${value.substring(0, 2)}`;
-      if (value.length > 2) formattedValue += `) ${value.substring(2, 7)}`;
-      if (value.length > 7) formattedValue += `-${value.substring(7, 11)}`;
-      e.target.value = formattedValue;
-    };
-
-    /** Constrói e insere os itens do FAQ na página. */
-    const buildFaq = () => {
-      faqData.forEach(item => {
-        const faqItem = document.createElement('div');
-        faqItem.className = 'border border-gray-200 rounded-xl overflow-hidden';
-        faqItem.innerHTML = `
-          <button class="faq-toggle w-full flex justify-between items-center p-6 text-left hover:bg-gray-50 transition-colors">
-            <h3 class="text-lg font-semibold">${item.q}</h3>
-            <i class="fas fa-chevron-down text-primary-600 transition-transform"></i>
-          </button>
-          <div class="faq-content hidden px-6 pb-6 pt-0">
-            <p class="text-gray-600">${item.a}</p>
-          </div>`;
-        faqContainer.appendChild(faqItem);
-      });
-    };
-
-    // =================================================================
-    // INICIALIZAÇÃO E EVENT LISTENERS
-    // =================================================================
-
-    buildFaq();
-
-    faqContainer.addEventListener('click', (e) => {
-      const toggleButton = e.target.closest('.faq-toggle');
-      if (toggleButton) toggleFaq(toggleButton);
-    });
-
-    openAboutModalBtn.addEventListener('click', () => openModal(aboutModal));
-    closeAboutModalBtn.addEventListener('click', () => closeModal(aboutModal));
-    closeSuccessModalBtn.addEventListener('click', () => closeModal(successModal));
-
-    [aboutModal, successModal].forEach(modal => {
-      modal.addEventListener('click', (e) => (e.target === modal) && closeModal(modal));
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        if (!aboutModal.classList.contains('hidden')) closeModal(aboutModal);
-        if (!successModal.classList.contains('hidden')) closeModal(successModal);
-      }
-    });
-
-    whatsappInput.addEventListener('input', applyPhoneMask);
-    emailInput.addEventListener('blur', (e) => {
-      const email = e.target.value;
-      const isValid = !email || validateEmail(email);
-      emailError.classList.toggle('hidden', isValid);
-      emailInput.classList.toggle('border-red-500', !isValid);
-    });
-
-    contactForm.addEventListener('submit', function (event) {
-      event.preventDefault();
-      if (!validateEmail(emailInput.value)) {
-          emailError.classList.remove('hidden');
-          emailInput.focus();
-          return;
-      }
-      const formData = new FormData(contactForm);
-      fetch('/submit', { method: 'POST', body: formData })
-        .then(response => response.json())
-        .then(data => {
-          if (data.status === 'success') {
-            contactForm.reset();
-            emailInput.classList.remove('border-red-500');
-            emailError.classList.add('hidden');
-            openModal(successModal);
-          } else {
-            alert(data.message || 'Ocorreu um erro ao enviar. Tente novamente.');
-          }
-        })
-        .catch(error => {
-          console.error('Error:', error);
-          alert('Ocorreu um erro de conexão. Verifique sua internet e tente novamente.');
+      /** Inicialização do Swiper.js */
+      const initSwiper = () => {
+        new Swiper('.hero-slider', {
+          loop: true,
+          autoplay: {
+            delay: 8000,
+            disableOnInteraction: false,
+          },
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          effect: 'fade',
+          fadeEffect: {
+            crossFade: true
+          },
         });
-    });
+      };
 
-    // Listener para Rolagem Suave dos links de âncora (CORRIGIDO)
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
+      /** Abre um modal especificado. */
+      const openModal = (modal) => modal.classList.remove('hidden');
 
-        // Se o link for apenas "#", rola para o topo da página
-        if (targetId === '#') {
-          window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-          });
-        } 
-        // Se for um link para uma seção, rola até a seção
-        else if (document.querySelector(targetId)) {
-          document.querySelector(targetId).scrollIntoView({
-            behavior: 'smooth'
-          });
+      /** Fecha um modal especificado. */
+      const closeModal = (modal) => modal.classList.add('hidden');
+
+      /** Alterna a visibilidade de um item do FAQ. */
+      const toggleFaq = (button) => {
+        const content = button.nextElementSibling;
+        const icon = button.querySelector('i');
+        content.classList.toggle('hidden');
+        icon.classList.toggle('fa-chevron-down');
+        icon.classList.toggle('fa-chevron-up');
+      };
+
+      /** Valida o formato de um e-mail. */
+      const validateEmail = (email) => {
+        const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+      };
+
+      /** Aplica a máscara de telefone (XX) XXXXX-XXXX. */
+      const applyPhoneMask = (e) => {
+        let value = e.target.value.replace(/\D/g, '').substring(0, 11);
+        let formattedValue = '';
+        if (value.length > 0) formattedValue = `(${value.substring(0, 2)}`;
+        if (value.length > 2) formattedValue += `) ${value.substring(2, 7)}`;
+        if (value.length > 7) formattedValue += `-${value.substring(7, 11)}`;
+        e.target.value = formattedValue;
+      };
+
+      /** Constrói e insere os itens do FAQ na página. */
+      const buildFaq = () => {
+        faqData.forEach(item => {
+          const faqItem = document.createElement('div');
+          faqItem.className = 'border border-gray-200 rounded-xl overflow-hidden';
+          faqItem.innerHTML = `
+            <button class="faq-toggle w-full flex justify-between items-center p-6 text-left hover:bg-gray-50 transition-colors">
+              <h3 class="text-lg font-semibold">${item.q}</h3>
+              <i class="fas fa-chevron-down text-primary-600 transition-transform"></i>
+            </button>
+            <div class="faq-content hidden px-6 pb-6 pt-0">
+              <p class="text-gray-600">${item.a}</p>
+            </div>`;
+          faqContainer.appendChild(faqItem);
+        });
+      };
+
+      // =================================================================
+      // INICIALIZAÇÃO E EVENT LISTENERS
+      // =================================================================
+
+      initSwiper(); // Inicializa o slider
+      buildFaq();   // Constrói o FAQ
+
+      faqContainer.addEventListener('click', (e) => {
+        const toggleButton = e.target.closest('.faq-toggle');
+        if (toggleButton) toggleFaq(toggleButton);
+      });
+
+      openAboutModalBtn.addEventListener('click', () => openModal(aboutModal));
+      closeAboutModalBtn.addEventListener('click', () => closeModal(aboutModal));
+      closeSuccessModalBtn.addEventListener('click', () => closeModal(successModal));
+
+      [aboutModal, successModal].forEach(modal => {
+        modal.addEventListener('click', (e) => (e.target === modal) && closeModal(modal));
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          if (!aboutModal.classList.contains('hidden')) closeModal(aboutModal);
+          if (!successModal.classList.contains('hidden')) closeModal(successModal);
         }
       });
-    });
 
-  });
-</script>
+      whatsappInput.addEventListener('input', applyPhoneMask);
+      emailInput.addEventListener('blur', (e) => {
+        const email = e.target.value;
+        const isValid = !email || validateEmail(email);
+        emailError.classList.toggle('hidden', isValid);
+        emailInput.classList.toggle('border-red-500', !isValid);
+      });
+
+      contactForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        if (!validateEmail(emailInput.value)) {
+            emailError.classList.remove('hidden');
+            emailInput.focus();
+            return;
+        }
+        const formData = new FormData(contactForm);
+        fetch('/submit', { method: 'POST', body: formData })
+          .then(response => response.json())
+          .then(data => {
+            if (data.status === 'success') {
+              contactForm.reset();
+              emailInput.classList.remove('border-red-500');
+              emailError.classList.add('hidden');
+              openModal(successModal);
+            } else {
+              alert(data.message || 'Ocorreu um erro ao enviar. Tente novamente.');
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            alert('Ocorreu um erro de conexão. Verifique sua internet e tente novamente.');
+          });
+      });
+
+      // Listener para Rolagem Suave dos links de âncora (CORRIGIDO)
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+
+          // Se o link for apenas "#", rola para o topo da página
+          if (targetId === '#') {
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth'
+            });
+          } 
+          // Se for um link para uma seção, rola até a seção
+          else if (document.querySelector(targetId)) {
+            document.querySelector(targetId).scrollIntoView({
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+
+    });
+  </script>
 </body>
 </html>
