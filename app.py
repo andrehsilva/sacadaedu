@@ -102,6 +102,11 @@ def view_leads():
         print(f"Erro ao buscar leads: {e}")
         # Em caso de erro, retorna uma mensagem simples
         return "<h1>Erro ao carregar os leads</h1><p>Não foi possível conectar ao banco de dados.</p>"
+
+@app.route('/chat')
+def chat_demo():
+    """Renderiza a página de demonstração do chat."""
+    return render_template('chat.html')
     
 # 5. Ponto de Entrada para rodar a aplicação (sem o db.create_all())
 if __name__ == '__main__':
