@@ -438,6 +438,38 @@
           </div>
       </div>
     </section>
+    <!-- =============================================================== -->
+<!--            NOVA SEÇÃO DE DEMONSTRAÇÃO DO CHATBOT            -->
+<!-- =============================================================== -->
+<section id="demo-chatbot" class="bg-primary-50 py-20">
+  <div class="container mx-auto px-6">
+    <div class="bg-white rounded-2xl shadow-lg p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8">
+      
+      <!-- Ícone e Texto -->
+      <div class="flex-grow text-center md:text-left">
+        <div class="flex justify-center md:justify-start items-center gap-4 mb-3">
+          <div class="w-12 h-12 bg-secondary-100 rounded-full flex items-center justify-center">
+            <i class="fas fa-comments text-2xl text-secondary-600"></i>
+          </div>
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-900">
+            Veja nossa IA em Ação
+          </h2>
+        </div>
+        <p class="text-gray-600 max-w-2xl">
+          Que tal uma demonstração prática? Interaja com nosso assistente virtual em um ambiente de teste e descubra como podemos otimizar o atendimento da sua escola.
+        </p>
+      </div>
+
+      <!-- Botão -->
+      <div class="flex-shrink-0 mt-6 md:mt-0">
+        <a href="{{ url_for('chat_demo') }}" class="inline-block bg-secondary-500 hover:bg-secondary-600 text-white font-bold py-4 px-8 rounded-lg shadow-lg transition-all transform hover:scale-105 text-lg">
+          Testar o Chatbot Agora
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
   </main>
 
   <footer class="bg-gray-900 text-gray-400 py-12">

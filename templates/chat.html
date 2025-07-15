@@ -9,6 +9,38 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+<script type="module">
+	import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+	createChat({
+	webhookUrl: 'https://q8c2t6vjn8n.cloudfy.host/webhook/dc265411-4096-42c8-ab33-18b1fe4e8cfd/chat',
+	webhookConfig: {
+		method: 'POST',
+		headers: {}
+	},
+	target: '#n8n-chat',
+	mode: 'window',
+	chatInputKey: 'chatInput',
+	chatSessionKey: 'sessionId',
+	loadPreviousSession: true,
+	metadata: {},
+	showWelcomeScreen: false,
+	defaultLanguage: 'en',
+	initialMessages: [
+		'Olá! 👋',
+	],
+	i18n: {
+		en: {
+			title: 'Olá! 👋',
+			subtitle: "Estamos aqui para ajudar você 24 horas por dia, 7 dias por semana.",
+			footer: '',
+			getStarted: 'Nova conversa',
+			inputPlaceholder: 'Nova conversa',
+		},
+	},
+});
+</script>
   
   <script>
     // Configuração do Tailwind CSS
@@ -23,47 +55,8 @@
       }
     }
   </script>
-  <style>
-    /* Estilos para o botão flutuante e o iframe do chat */
-    #chat-widget-container {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 1000;
-    }
 
-    #chat-toggle-button {
-      background-color: #16a34a; /* Cor primária do seu site */
-      color: white;
-      border: none;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 24px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.2s ease-in-out, background-color 0.2s;
-    }
-    #chat-toggle-button:hover {
-      transform: scale(1.1);
-    }
-
-    #chat-iframe {
-      display: none; /* Começa escondido */
-      position: absolute;
-      bottom: 80px; /* Posição acima do botão */
-      right: 0;
-      width: 370px;
-      height: 550px;
-      border: 1px solid #e5e7eb;
-      border-radius: 16px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-      overflow: hidden;
-    }
-  </style>
+ 
 </head>
 <body class="bg-gray-100 font-sans">
 
@@ -126,39 +119,10 @@
 
   </div>
 
-  <!-- Widget do Chat -->
-<div id="chat-widget-container">
-  <iframe id="chat-iframe"
-    src="https://q8c2t6vjn8n.cloudfly.host/webhook/dc265411-4096-42c8-ab33-18b1fe4e8cfd/chat">
-  </iframe>
-  <button id="chat-toggle-button" aria-label="Abrir chat">
-    <i class="fas fa-comments"></i>
-  </button>
-</div>
 
 
   <!-- Script para controlar o widget (colocado no final do body) -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const toggleBtn = document.getElementById("chat-toggle-button");
-      const chatFrame = document.getElementById("chat-iframe");
-      const btnIcon = toggleBtn.querySelector('i');
-
-      toggleBtn.addEventListener("click", () => {
-        const isHidden = chatFrame.style.display === "none" || chatFrame.style.display === "";
-        
-        if (isHidden) {
-          chatFrame.style.display = "block";
-          btnIcon.classList.remove('fa-comments');
-          btnIcon.classList.add('fa-times'); // Ícone de "X" para fechar
-        } else {
-          chatFrame.style.display = "none";
-          btnIcon.classList.remove('fa-times');
-          btnIcon.classList.add('fa-comments');
-        }
-      });
-    });
-  </script>
+  
 
 </body>
 </html>
