@@ -64,43 +64,82 @@
       opacity: 1; 
       transform: scale(1.2); 
     }
+    #fullscreen-menu.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
   </style>
 </head>
 
 <body class="font-sans antialiased text-gray-800 bg-gray-50">
 
   <header class="bg-white shadow-md sticky top-0 z-50">
-    <div class="container mx-auto px-6 py-4 flex items-center justify-between">
-      
-      <a href="#" class="flex items-center space-x-3">
-        <div class="bg-primary-600 text-white p-2 rounded-xl shadow-sm">
-          <i class="fas fa-lightbulb text-xl"></i>
-        </div>
-        <span class="text-2xl font-bold text-gray-800">
-          Sacada<span class="text-primary-600">Edu</span>
-        </span>
+  <div class="container mx-auto px-6 py-4 flex items-center justify-between relative">
+    
+    <a href="#" class="flex items-center space-x-3">
+      <div class="bg-primary-600 text-white p-2 rounded-xl shadow-sm">
+        <i class="fas fa-lightbulb text-xl"></i>
+      </div>
+      <span class="text-2xl font-bold text-gray-800">
+        Sacada<span class="text-primary-600">Edu</span>
+      </span>
+    </a>
+
+    <button id="mobile-menu-button" class="md:hidden text-gray-600 focus:outline-none z-20">
+      <i class="fas fa-bars text-2xl"></i>
+    </button>
+    
+    <nav id="mobile-menu"
+      class="hidden md:flex md:items-center md:space-x-8
+             absolute md:static top-full left-0 w-full md:w-auto
+             bg-white md:bg-transparent shadow-md md:shadow-none
+             p-6 md:p-0
+             flex-col md:flex-row items-stretch md:items-center space-y-4 md:space-y-0"
+    >
+      <a href="#quem-somos" class="text-gray-700 font-medium hover:text-primary-600 transition duration-300 relative group">
+        <span>Sobre</span>
+        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 transition-all duration-300 group-hover:w-full"></span>
       </a>
+      <a href="#servicos" class="text-gray-700 font-medium hover:text-primary-600 transition duration-300 relative group">
+        <span>Serviços</span>
+        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 transition-all duration-300 group-hover:w-full"></span>
+      </a>
+      <a href="#formulario" class="bg-primary-600 hover:bg-primary-700 text-white font-semibold py-2.5 px-6 rounded-xl shadow transition-all duration-300 transform hover:scale-105 text-center">
+        Conversar com especialista
+      </a>
+    </nav>
+    
+  </div>
+</header>
+<div id="fullscreen-menu" class="fixed inset-0 bg-white z-50 flex flex-col transition-opacity duration-300 ease-in-out opacity-0 pointer-events-none">
+  
+  <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="#" class="flex items-center space-x-3">
+      <div class="bg-primary-600 text-white p-2 rounded-xl shadow-sm">
+        <i class="fas fa-lightbulb text-xl"></i>
+      </div>
+      <span class="text-2xl font-bold text-gray-800">
+        Sacada<span class="text-primary-600">Edu</span>
+      </span>
+    </a>
+    <button id="close-menu-button" class="text-gray-600 hover:text-primary-600 focus:outline-none">
+      <i class="fas fa-times text-3xl"></i>
+    </button>
+  </div>
 
-      <nav class="hidden md:flex items-center space-x-8">
-        <a href="#quem-somos" class="text-gray-700 font-medium hover:text-primary-600 transition duration-300 relative group">
-          <span>Sobre</span>
-          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 transition-all duration-300 group-hover:w-full"></span>
-        </a>
-        <a href="#servicos" class="text-gray-700 font-medium hover:text-primary-600 transition duration-300 relative group">
-          <span>Serviços</span>
-          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 transition-all duration-300 group-hover:w-full"></span>
-        </a>
-        <a href="#formulario" class="bg-primary-600 hover:bg-primary-700 text-white font-semibold py-2.5 px-6 rounded-xl shadow transition-all duration-300 transform hover:scale-105">
-          Conversar com especialista
-        </a>
-      </nav>
+  <nav class="flex-grow flex flex-col items-center justify-center space-y-8 px-6">
+    <a href="#quem-somos" class="text-3xl font-bold text-gray-700 hover:text-primary-600 transition-colors duration-300">
+      Sobre
+    </a>
+    <a href="#servicos" class="text-3xl font-bold text-gray-700 hover:text-primary-600 transition-colors duration-300">
+      Serviços
+    </a>
+    <a href="#formulario" class="bg-primary-600 hover:bg-primary-700 text-white font-semibold py-4 px-10 rounded-xl shadow text-xl transition-all duration-300 transform hover:scale-105">
+      Conversar com especialista
+    </a>
+  </nav>
 
-      <button class="md:hidden text-gray-600 focus:outline-none">
-        <i class="fas fa-bars text-2xl"></i>
-      </button>
-      
-    </div>
-  </header>
+</div>
 
   <main>
     <section class="relative bg-gradient-to-br from-primary-700 to-primary-900 text-white overflow-hidden">
@@ -546,141 +585,170 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('DOMContentLoaded', () => {
 
-      // =================================================================
-      // SETUP: Seleção de Elementos do DOM e Configurações Iniciais
-      // =================================================================
+    // =================================================================
+    // SETUP: Seleção de Elementos do DOM e Configurações Iniciais
+    // =================================================================
 
-      // Elementos do Formulário e Validação
-      const contactForm = document.querySelector('#formulario form');
-      const whatsappInput = document.getElementById('whatsapp');
-      const emailInput = document.getElementById('email');
-      const emailError = document.getElementById('email-error');
+    // Elementos do Menu Fullscreen (NOVO)
+    const menuButton = document.getElementById('mobile-menu-button');
+    const fullscreenMenu = document.getElementById('fullscreen-menu');
+    const closeMenuButton = document.getElementById('close-menu-button');
 
-      // Elementos dos Modais
-      const aboutModal = document.getElementById('aboutModal');
-      const successModal = document.getElementById('successModal');
-      const openAboutModalBtn = document.getElementById('openAboutModalBtn');
-      const closeAboutModalBtn = document.getElementById('closeAboutModalBtn');
-      const closeSuccessModalBtn = document.getElementById('closeSuccessModalBtn');
+    // Elementos do Formulário e Validação
+    const contactForm = document.querySelector('#formulario form');
+    const whatsappInput = document.getElementById('whatsapp');
+    const emailInput = document.getElementById('email');
+    const emailError = document.getElementById('email-error');
 
-      // Elementos do FAQ
-      const faqContainer = document.getElementById('faq-container');
-      const faqData = [
-        { q: 'Mas afinal, o que estou contratando?', a: 'Uma solução personalizada para sua necessidade: consultoria estratégica, automação de processos ou a conexão de ferramentas como Drive, Planilhas e IA, tudo adaptado à realidade da sua escola.' },
-        { q: 'Preciso ter conhecimento técnico para usar?', a: 'Não. Nós cuidamos de toda a implementação e fornecemos treinamento completo para sua equipe, com suporte contínuo para qualquer dúvida ou ajuste.' },
-        { q: 'A IA vai substituir minha equipe?', a: 'Não. Nossa solução é projetada para eliminar tarefas repetitivas, permitindo que sua equipe se concentre no atendimento humanizado e em atividades estratégicas.' },
-        { q: 'Quanto tempo leva para implementar?', a: 'O tempo varia. Soluções simples podem levar 2 semanas, enquanto as mais completas, de 4 a 6 semanas. Respeitamos o ritmo e as necessidades de cada escola.' },
-        { q: 'Preciso investir em infraestrutura complexa?', a: 'Não para soluções simples. Para demandas maiores, nossa equipe avalia e orienta sobre a melhor estrutura, sempre de acordo com a sua realidade.' },
-        { q: 'Como é garantida a segurança dos dados?', a: 'Utilizamos criptografia de ponta a ponta, servidores em território nacional e seguimos rigorosamente a LGPD. Os dados são propriedade exclusiva da sua escola.' }
-      ];
+    // Elementos dos Modais
+    const aboutModal = document.getElementById('aboutModal');
+    const successModal = document.getElementById('successModal');
+    const openAboutModalBtn = document.getElementById('openAboutModalBtn');
+    const closeAboutModalBtn = document.getElementById('closeAboutModalBtn');
+    const closeSuccessModalBtn = document.getElementById('closeSuccessModalBtn');
 
-      // =================================================================
-      // FUNÇÕES: Lógica Reutilizável
-      // =================================================================
+    // Elementos do FAQ
+    const faqContainer = document.getElementById('faq-container');
+    const faqData = [
+      { q: 'Mas afinal, o que estou contratando?', a: 'Uma solução personalizada para sua necessidade: consultoria estratégica, automação de processos ou a conexão de ferramentas como Drive, Planilhas e IA, tudo adaptado à realidade da sua escola.' },
+      { q: 'Preciso ter conhecimento técnico para usar?', a: 'Não. Nós cuidamos de toda a implementação e fornecemos treinamento completo para sua equipe, com suporte contínuo para qualquer dúvida ou ajuste.' },
+      { q: 'A IA vai substituir minha equipe?', a: 'Não. Nossa solução é projetada para eliminar tarefas repetitivas, permitindo que sua equipe se concentre no atendimento humanizado e em atividades estratégicas.' },
+      { q: 'Quanto tempo leva para implementar?', a: 'O tempo varia. Soluções simples podem levar 2 semanas, enquanto as mais completas, de 4 a 6 semanas. Respeitamos o ritmo e as necessidades de cada escola.' },
+      { q: 'Preciso investir em infraestrutura complexa?', a: 'Não para soluções simples. Para demandas maiores, nossa equipe avalia e orienta sobre a melhor estrutura, sempre de acordo com a sua realidade.' },
+      { q: 'Como é garantida a segurança dos dados?', a: 'Utilizamos criptografia de ponta a ponta, servidores em território nacional e seguimos rigorosamente a LGPD. Os dados são propriedade exclusiva da sua escola.' }
+    ];
 
-      /** Inicialização do Swiper.js */
-      const initSwiper = () => {
-        new Swiper('.hero-slider', {
-          loop: true,
-          autoplay: {
-            delay: 8000,
-            disableOnInteraction: false,
-          },
-          pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-          },
-          effect: 'fade',
-          fadeEffect: {
-            crossFade: true
-          },
-        });
-      };
+    // =================================================================
+    // FUNÇÕES: Lógica Reutilizável
+    // =================================================================
 
-      /** Abre um modal especificado. */
-      const openModal = (modal) => modal.classList.remove('hidden');
+    /** Abre o menu fullscreen */
+    const openFullscreenMenu = () => {
+      if (fullscreenMenu) fullscreenMenu.classList.add('is-open');
+    };
 
-      /** Fecha um modal especificado. */
-      const closeModal = (modal) => modal.classList.add('hidden');
+    /** Fecha o menu fullscreen */
+    const closeFullscreenMenu = () => {
+      if (fullscreenMenu) fullscreenMenu.classList.remove('is-open');
+    };
 
-      /** Alterna a visibilidade de um item do FAQ. */
-      const toggleFaq = (button) => {
-        const content = button.nextElementSibling;
-        const icon = button.querySelector('i');
-        content.classList.toggle('hidden');
-        icon.classList.toggle('fa-chevron-down');
-        icon.classList.toggle('fa-chevron-up');
-      };
+    /** Inicialização do Swiper.js */
+    const initSwiper = () => {
+      new Swiper('.hero-slider', {
+        loop: true,
+        autoplay: { delay: 8000, disableOnInteraction: false, },
+        pagination: { el: '.swiper-pagination', clickable: true, },
+        effect: 'fade',
+        fadeEffect: { crossFade: true },
+      });
+    };
 
-      /** Valida o formato de um e-mail. */
-      const validateEmail = (email) => {
-        const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return re.test(String(email).toLowerCase());
-      };
+    /** Abre um modal especificado. */
+    const openModal = (modal) => modal.classList.remove('hidden');
 
-      /** Aplica a máscara de telefone (XX) XXXXX-XXXX. */
-      const applyPhoneMask = (e) => {
-        let value = e.target.value.replace(/\D/g, '').substring(0, 11);
-        let formattedValue = '';
-        if (value.length > 0) formattedValue = `(${value.substring(0, 2)}`;
-        if (value.length > 2) formattedValue += `) ${value.substring(2, 7)}`;
-        if (value.length > 7) formattedValue += `-${value.substring(7, 11)}`;
-        e.target.value = formattedValue;
-      };
+    /** Fecha um modal especificado. */
+    const closeModal = (modal) => modal.classList.add('hidden');
 
-      /** Constrói e insere os itens do FAQ na página. */
-      const buildFaq = () => {
-        faqData.forEach(item => {
-          const faqItem = document.createElement('div');
-          faqItem.className = 'border border-gray-200 rounded-xl overflow-hidden';
-          faqItem.innerHTML = `
-            <button class="faq-toggle w-full flex justify-between items-center p-6 text-left hover:bg-gray-50 transition-colors">
-              <h3 class="text-lg font-semibold">${item.q}</h3>
-              <i class="fas fa-chevron-down text-primary-600 transition-transform"></i>
-            </button>
-            <div class="faq-content hidden px-6 pb-6 pt-0">
-              <p class="text-gray-600">${item.a}</p>
-            </div>`;
-          faqContainer.appendChild(faqItem);
-        });
-      };
+    /** Alterna a visibilidade de um item do FAQ. */
+    const toggleFaq = (button) => {
+      const content = button.nextElementSibling;
+      const icon = button.querySelector('i');
+      content.classList.toggle('hidden');
+      icon.classList.toggle('fa-chevron-down');
+      icon.classList.toggle('fa-chevron-up');
+    };
 
-      // =================================================================
-      // INICIALIZAÇÃO E EVENT LISTENERS
-      // =================================================================
+    /** Valida o formato de um e-mail. */
+    const validateEmail = (email) => {
+      const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(String(email).toLowerCase());
+    };
 
-      initSwiper(); // Inicializa o slider
-      buildFaq();   // Constrói o FAQ
+    /** Aplica a máscara de telefone (XX) XXXXX-XXXX. */
+    const applyPhoneMask = (e) => {
+      let value = e.target.value.replace(/\D/g, '').substring(0, 11);
+      let formattedValue = '';
+      if (value.length > 0) formattedValue = `(${value.substring(0, 2)}`;
+      if (value.length > 2) formattedValue += `) ${value.substring(2, 7)}`;
+      if (value.length > 7) formattedValue += `-${value.substring(7, 11)}`;
+      e.target.value = formattedValue;
+    };
 
+    /** Constrói e insere os itens do FAQ na página. */
+    const buildFaq = () => {
+      if (!faqContainer) return;
+      faqContainer.innerHTML = ''; // Limpa antes de construir para evitar duplicatas
+      faqData.forEach(item => {
+        const faqItem = document.createElement('div');
+        faqItem.className = 'border border-gray-200 rounded-xl overflow-hidden';
+        faqItem.innerHTML = `
+          <button class="faq-toggle w-full flex justify-between items-center p-6 text-left hover:bg-gray-50 transition-colors">
+            <h3 class="text-lg font-semibold">${item.q}</h3>
+            <i class="fas fa-chevron-down text-primary-600 transition-transform"></i>
+          </button>
+          <div class="faq-content hidden px-6 pb-6 pt-0">
+            <p class="text-gray-600">${item.a}</p>
+          </div>`;
+        faqContainer.appendChild(faqItem);
+      });
+    };
+
+    // =================================================================
+    // INICIALIZAÇÃO E EVENT LISTENERS
+    // =================================================================
+
+    initSwiper();
+    buildFaq();
+
+    // Listeners do Menu Fullscreen (NOVO)
+    if (menuButton) menuButton.addEventListener('click', openFullscreenMenu);
+    if (closeMenuButton) closeMenuButton.addEventListener('click', closeFullscreenMenu);
+    if (fullscreenMenu) {
+      fullscreenMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeFullscreenMenu);
+      });
+    }
+
+    // Listener do FAQ
+    if (faqContainer) {
       faqContainer.addEventListener('click', (e) => {
         const toggleButton = e.target.closest('.faq-toggle');
         if (toggleButton) toggleFaq(toggleButton);
       });
+    }
 
-      openAboutModalBtn.addEventListener('click', () => openModal(aboutModal));
-      closeAboutModalBtn.addEventListener('click', () => closeModal(aboutModal));
-      closeSuccessModalBtn.addEventListener('click', () => closeModal(successModal));
+    // Listeners dos Modais
+    if (openAboutModalBtn) openAboutModalBtn.addEventListener('click', () => openModal(aboutModal));
+    if (closeAboutModalBtn) closeAboutModalBtn.addEventListener('click', () => closeModal(aboutModal));
+    if (closeSuccessModalBtn) closeSuccessModalBtn.addEventListener('click', () => closeModal(successModal));
 
-      [aboutModal, successModal].forEach(modal => {
-        modal.addEventListener('click', (e) => (e.target === modal) && closeModal(modal));
-      });
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-          if (!aboutModal.classList.contains('hidden')) closeModal(aboutModal);
-          if (!successModal.classList.contains('hidden')) closeModal(successModal);
-        }
-      });
+    [aboutModal, successModal].forEach(modal => {
+      if (modal) modal.addEventListener('click', (e) => (e.target === modal) && closeModal(modal));
+    });
 
-      whatsappInput.addEventListener('input', applyPhoneMask);
-      emailInput.addEventListener('blur', (e) => {
-        const email = e.target.value;
-        const isValid = !email || validateEmail(email);
-        emailError.classList.toggle('hidden', isValid);
-        emailInput.classList.toggle('border-red-500', !isValid);
-      });
+    // Listeners do Teclado (ESC para fechar modais e menu)
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (fullscreenMenu && fullscreenMenu.classList.contains('is-open')) closeFullscreenMenu();
+        if (aboutModal && !aboutModal.classList.contains('hidden')) closeModal(aboutModal);
+        if (successModal && !successModal.classList.contains('hidden')) closeModal(successModal);
+      }
+    });
 
+    // Listeners do Formulário
+    if(whatsappInput) whatsappInput.addEventListener('input', applyPhoneMask);
+    if(emailInput) {
+        emailInput.addEventListener('blur', (e) => {
+          const email = e.target.value;
+          const isValid = !email || validateEmail(email);
+          emailError.classList.toggle('hidden', isValid);
+          emailInput.classList.toggle('border-red-500', !isValid);
+        });
+    }
+    
+    if (contactForm) {
       contactForm.addEventListener('submit', function (event) {
         event.preventDefault();
         if (!validateEmail(emailInput.value)) {
@@ -706,30 +774,32 @@
             alert('Ocorreu um erro de conexão. Verifique sua internet e tente novamente.');
           });
       });
+    }
+      
+    // Listener para Rolagem Suave dos links de âncora
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
 
-      // Listener para Rolagem Suave dos links de âncora (CORRIGIDO)
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
+        if (targetId === '#') {
           e.preventDefault();
-          const targetId = this.getAttribute('href');
-
-          // Se o link for apenas "#", rola para o topo da página
-          if (targetId === '#') {
-            window.scrollTo({
-              top: 0,
-              behavior: 'smooth'
-            });
-          } 
-          // Se for um link para uma seção, rola até a seção
-          else if (document.querySelector(targetId)) {
-            document.querySelector(targetId).scrollIntoView({
-              behavior: 'smooth'
-            });
-          }
-        });
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        } 
+        else if (targetElement) {
+          e.preventDefault();
+          targetElement.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
       });
-
     });
-  </script>
+
+  });
+</script>
+
 </body>
 </html>
