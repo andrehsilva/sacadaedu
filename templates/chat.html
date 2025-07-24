@@ -6,73 +6,85 @@
   <title>Demonstração do Chat | SacadaWeb</title>
   <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='images/lightbulb.svg') }}">
   
-  
-  <!-- Estilos e Fontes -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
 
   <script type="module">
-	import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+    import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
 
-	createChat({
-	webhookUrl: 'https://q8c2t6vjn8n.cloudfy.host/webhook/dc265411-4096-42c8-ab33-18b1fe4e8cfd/chat',
-	webhookConfig: {
-		method: 'POST',
-		headers: {}
-	},
-	target: '#n8n-chat',
-	mode: 'window',
-	chatInputKey: 'chatInput',
-	chatSessionKey: 'sessionId',
-	loadPreviousSession: true,
-	metadata: {},
-	showWelcomeScreen: false,
-	defaultLanguage: 'en',
-	initialMessages: [
-		'Olá! 👋',
-	],
-	i18n: {
-		en: {
-			title: 'Olá! 👋',
-			subtitle: "Bem-vindo(a) ao nosso centro de soluções! 💡 \nEstou aqui para te ajudar 24 horas por dia, 7 dias por semana.",
-			footer: '',
-			getStarted: 'Nova conversa',
-			inputPlaceholder: 'Nova conversa',
-		},
-	},
-});
-</script>
-<style>
-  :root {
-	--chat--color-dark: #4f9252;
-</style>
-  
-  <script>
-    // Configuração do Tailwind CSS
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: { sans: ['DM Sans', 'sans-serif'] },
-          colors: {
-            primary: { 500: '#22c55e', 600: '#16a34a' },
-          },
-        }
-      }
-    }
+    createChat({
+      webhookUrl: 'https://q8c2t6vjn8n.cloudfy.host/webhook/6e7f6f68-9fcc-4a1f-bc77-11c8aadd1b9c/chat',
+      target: '#n8n-chat',
+      mode: 'window',
+      
+      // Mantemos a tela de boas-vindas desativada para não ter o botão
+      showWelcomeScreen: false,
+      
+      // A saudação inicial continua aqui
+      initialMessages: [
+        'Olá! Sou o Edu, assistente virtual da Escola SacadaEdu. Como posso te ajudar hoje?',
+      ],
+
+      bot: {
+          name: 'Edu',
+          avatar: 'https://i.ibb.co/6yT0kS2/sacadaedu-logo-icon.png' 
+      },
+
+      // --- CORREÇÃO: ADICIONAMOS O i18n DE VOLTA ---
+      // Desta vez, apenas com os textos que queremos customizar.
+      i18n: {
+        'pt-BR': {
+          title: 'Assistente Edu',
+          subtitle: 'Conectado com a Escola SacadaEdu', // Um subtítulo mais direto
+          inputPlaceholder: 'Digite sua dúvida aqui...',
+          // A linha 'getStarted' foi omitida de propósito para não gerar o botão
+        },
+      },
+      
+      // Configurações restantes
+      chatInputKey: 'chatInput',
+      chatSessionKey: 'sessionId',
+      loadPreviousSession: true,
+      metadata: {},
+      defaultLanguage: 'pt-BR',
+    });
   </script>
+  
+  <style>
+    :root {
+      --chat-font-family: 'Poppins', sans-serif;
+      --chat--color-primary: #22c55e;
+      --chat--color-dark: #166534;
+      --chat--color-light: #f0fdf4;
+      --chat-header-background: #166534;
+      --chat-header-color: #ffffff;
+      --chat-bubble-bot-background: #f0fdf4;
+      --chat-bubble-bot-color: #1f2937;
+      --chat-bubble-user-background: #22c55e;
+      --chat-bubble-user-color: #ffffff;
+      --chat-window-box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+  </style>
+  <style>
+    [data-testid="n8n-chat-footer"] {
+      display: none !important;
+    }
+  </style>
 
- 
 </head>
 <body class="bg-gray-100 font-sans">
 
-  <!-- Conteúdo principal da página de demonstração -->
+  <div id="n8n-chat"></div>
+
   <div class="container mx-auto p-4 sm:p-8">
     <header class="mb-8 flex flex-col sm:flex-row justify-between items-start sm:items-center">
       <div>
-        <h1 class="text-3xl font-bold text-gray-800">Demonstração do Chatbot</h1>
-        <p class="text-gray-600 mt-2">Use o widget no canto inferior direito para interagir com nosso assistente virtual.</p>
+        <h1 class="text-3xl font-bold text-gray-800">Explore o Conhecimento da SacadaEdu</h1>
+        <p class="text-gray-600 mt-2">Use o widget no canto inferior direito para conversar com o Edu, nosso assistente de IA.</p>
       </div>
       <a href="{{ url_for('home') }}" class="mt-4 sm:mt-0 bg-primary-600 hover:bg-primary-500 text-white font-semibold py-2 px-4 rounded-lg shadow transition-colors">
         &larr; Voltar para a página principal
@@ -80,56 +92,83 @@
     </header>
 
     <div class="bg-white rounded-lg shadow p-8 md:p-12">
-  <div class="text-center">
-    <h2 class="text-2xl font-bold mb-2">Teste nosso Assistente Virtual em tempo real</h2>
-    <p class="text-gray-600 max-w-3xl mx-auto">
-      Converse com o Edu, nosso assistente de IA que simula o atendimento da escola fictícia "SacadaEdu". Este ambiente de demonstração mostra como um chatbot inteligente interage, captura informações e responde dúvidas com precisão. A base de conhecimento para este teste é reduzida, mas pode se tornar muito poderosa e robusta com as suas informações para a sua escola.
-    </p>
-  </div>
-
-  <div class="mt-8 pt-8 border-t border-gray-200">
-    <h3 class="text-xl font-bold text-gray-800 mb-6 text-center">O que você pode testar:</h3>
-    
-    <div class="grid md:grid-cols-2 gap-x-8 gap-y-6 max-w-4xl mx-auto text-left">
-      
-      <!-- Card 1: Captura de Leads -->
-      <div class="bg-gray-50 p-4 rounded-lg">
-        <h4 class="font-semibold text-gray-900">1. Fluxo de captura de leads</h4>
-        <p class="text-gray-600 text-sm">Comece a conversa e veja como o Edu solicita seu nome e contato de forma natural, preparando o terreno para um atendimento personalizado.</p>
+      <div class="text-center">
+        <h2 class="text-2xl font-bold mb-2">Converse com quem sabe tudo sobre a nossa escola.</h2>
+        <p class="text-gray-600 max-w-3xl mx-auto">
+          O assistente virtual **Edu** foi treinado com o nosso **Guia Mestre e Regimento Interno completo**. Ele não dá respostas genéricas: ele encontra informações precisas sobre nossa pedagogia, regras, rotinas, taxas e eventos.
+          <br><br>
+          A precisão dele depende da sua pergunta. **Quanto mais específico você for, mais inteligente ele parecerá.**
+        </p>
       </div>
 
-      <!-- Card 2: Base de Conhecimento -->
-      <div class="bg-gray-50 p-4 rounded-lg">
-        <h4 class="font-semibold text-gray-900">2. Base de conhecimento geral</h4>
-        <p class="text-gray-600 text-sm">Faça perguntas abertas como: <em class="font-medium">"Qual é a proposta pedagógica?"</em> ou <em class="font-medium">"Como funciona a matrícula?"</em>.</p>
-      </div>
-      
-      <!-- Card 3: Dados Específicos -->
-      <div class="bg-gray-50 p-4 rounded-lg">
-        <h4 class="font-semibold text-gray-900">3. Consultas a dados específicos</h4>
-        <p class="text-gray-600 text-sm">Desafie-o com: <em class="font-medium">"Quando começam as aulas?"</em> ou <em class="font-medium">"Quem é a professora de ciências?"</em>.</p>
+      <div class="mt-10 pt-10 border-t border-gray-200">
+        <h3 class="text-2xl font-bold text-gray-800 mb-8 text-center">Desafie o Edu. Surpreenda-se com as respostas.</h3>
+        
+        <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
+          Esqueça as perguntas óbvias. Teste o verdadeiro poder da nossa IA fazendo perguntas detalhadas que você faria se estivesse em uma reunião com nosso diretor. Aqui estão algumas ideias para você começar:
+        </p>
+        
+        <div class="grid md:grid-cols-2 gap-x-8 gap-y-6 max-w-5xl mx-auto text-left">
+          
+          <div class="bg-blue-50 border border-blue-200 p-6 rounded-lg shadow-sm">
+            <h4 class="font-semibold text-lg text-blue-900 mb-3">Para famílias que pensam nos detalhes:</h4>
+            <ul class="list-disc list-inside space-y-2 text-gray-700">
+              <li>Qual o procedimento exato da escola se meu filho tiver febre durante a aula?</li>
+              <li>Meu filho é alérgico a glúten. Como o restaurante da escola gerencia as restrições alimentares?</li>
+              <li>O que acontece se um aluno for pego plagiando um trabalho da internet?</li>
+              <li>Além do desconto para irmãos, existe algum programa de desconto por fidelidade?</li>
+            </ul>
+          </div>
+
+          <div class="bg-green-50 border border-green-200 p-6 rounded-lg shadow-sm">
+            <h4 class="font-semibold text-lg text-green-900 mb-3">Para entender a fundo nossa proposta:</h4>
+            <ul class="list-disc list-inside space-y-2 text-gray-700">
+              <li>Como a linha pedagógica "sociointeracionista" se aplica na prática na rotina do Ensino Fundamental I?</li>
+              <li>O que é exatamente a "Sala Maker" e que tipo de projetos são feitos lá?</li>
+              <li>Quem é o Coordenador de Tecnologia Educacional e qual a sua função?</li>
+              <li>Qual o nome do projeto de voluntariado da escola e como os alunos participam?</li>
+            </ul>
+          </div>
+
+          <div class="bg-yellow-50 border border-yellow-200 p-6 rounded-lg shadow-sm md:col-span-2">
+            <h4 class="font-semibold text-lg text-yellow-900 mb-3">Para os alunos (ou pais) mais curiosos:</h4>
+            <ul class="list-disc list-inside space-y-2 text-gray-700">
+              <li>É permitido usar boné dentro da sala de aula?</li>
+              <li>Além dos esportes, quais atividades extracurriculares culturais, como clube do livro, são oferecidas?</li>
+              <li>É permitido aos pais filmar a apresentação dos filhos na Festa Junina?</li>
+            </ul>
+          </div>
+          <div class="bg-purple-50 border border-purple-200 p-6 rounded-lg shadow-sm">
+            <h4 class="font-semibold text-lg text-purple-900 mb-3">Interessado em Matrículas?</h4>
+            <ul class="list-disc list-inside space-y-2 text-gray-700">
+              <li>Qual o valor da mensalidade para o 5º ano?</li>
+              <li>Quais documentos são necessários para a matrícula?</li>
+              <li>Podemos agendar uma visita para conhecer a escola?</li>
+              <li>Até quando vão as inscrições para o próximo ano letivo?</li>
+            </ul>
+          </div>
+
+          <div class="bg-teal-50 border border-teal-200 p-6 rounded-lg shadow-sm">
+            <h4 class="font-semibold text-lg text-teal-900 mb-3">Dúvidas Frequentes:</h4>
+            <ul class="list-disc list-inside space-y-2 text-gray-700">
+              <li>Qual o endereço completo da escola?</li>
+              <li>Quem é o professor(a) do 3º ano B?</li>
+              <li>Qual o horário de entrada e saída do Ensino Médio?</li>
+              <li>Como faço para justificar a falta de um aluno?</li>
+            </ul>
+          </div>
       </div>
 
-      <!-- Card 4: Agendamentos -->
-      <div class="bg-gray-50 p-4 rounded-lg">
-        <h4 class="font-semibold text-gray-900">4. Agendamento de reuniões</h4>
-        <p class="text-gray-600 text-sm">Mostre interesse em saber mais e veja como ele inicia o processo para marcar uma conversa.</p>
-      </div>
+        </div>
+        
 
+      <div class="mt-12 text-center">
+        <p class="text-2xl font-light text-gray-800">Agora é sua vez.</p>
+        <p class="text-gray-700 mt-2">Clique no ícone de chat <i class="fas fa-comments text-primary-600"></i> no canto da tela e coloque a inteligência do Edu à prova!</p>
+      </div>
     </div>
-  </div>
-
-  <div class="mt-10 text-center">
-    <p class="text-gray-700">Clique no ícone de chat <i class="fas fa-comments text-primary-600"></i> no canto da tela e coloque a inteligência do Edu à prova!</p>
-  </div>
-</div>
 
   </div>
-
-
-
-  <!-- Script para controlar o widget (colocado no final do body) -->
-  
 
 </body>
 </html>
