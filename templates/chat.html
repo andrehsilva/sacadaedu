@@ -3,49 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Demonstração do Chat | SacadaWeb</title>
+  <title>Demonstração do Chat | SacadaEdu</title>
   <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='images/lightbulb.svg') }}">
   
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+  <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
   <script type="module">
     import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
-
     createChat({
       webhookUrl: 'https://q8c2t6vjn8n.cloudfy.host/webhook/6e7f6f68-9fcc-4a1f-bc77-11c8aadd1b9c/chat',
       target: '#n8n-chat',
       mode: 'window',
-      
-      // Mantemos a tela de boas-vindas desativada para não ter o botão
       showWelcomeScreen: false,
-      
-      // A saudação inicial continua aqui
-      initialMessages: [
-        'Olá! Sou o Edu, assistente virtual da Escola SacadaEdu. Como posso te ajudar hoje?',
-      ],
-
-      bot: {
-          name: 'Edu',
-          avatar: 'https://i.ibb.co/6yT0kS2/sacadaedu-logo-icon.png' 
-      },
-
-      // --- CORREÇÃO: ADICIONAMOS O i18n DE VOLTA ---
-      // Desta vez, apenas com os textos que queremos customizar.
-      i18n: {
-        'pt-BR': {
-          title: 'Assistente Edu',
-          subtitle: 'Conectado com a Escola SacadaEdu', // Um subtítulo mais direto
-          inputPlaceholder: 'Digite sua dúvida aqui...',
-          // A linha 'getStarted' foi omitida de propósito para não gerar o botão
-        },
-      },
-      
-      // Configurações restantes
+      initialMessages: ['Olá'],
+      bot: { name: 'Edu', avatar: 'https://i.ibb.co/6yT0kS2/sacadaedu-logo-icon.png' },
+      i18n: { 'pt-BR': { title: 'Assistente Edu', subtitle: 'Online', inputPlaceholder: 'Digite sua dúvida aqui...' } },
       chatInputKey: 'chatInput',
       chatSessionKey: 'sessionId',
       loadPreviousSession: true,
@@ -53,121 +29,160 @@
       defaultLanguage: 'pt-BR',
     });
   </script>
-  
-  <style>
-    :root {
-      --chat-font-family: 'Poppins', sans-serif;
-      --chat--color-primary: #22c55e;
-      --chat--color-dark: #166534;
-      --chat--color-light: #f0fdf4;
-      --chat-header-background: #166534;
-      --chat-header-color: #ffffff;
-      --chat-bubble-bot-background: #f0fdf4;
-      --chat-bubble-bot-color: #1f2937;
-      --chat-bubble-user-background: #22c55e;
-      --chat-bubble-user-color: #ffffff;
-      --chat-window-box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    }
-  </style>
-  <style>
-    [data-testid="n8n-chat-footer"] {
-      display: none !important;
-    }
-  </style>
 
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: { 50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 300: '#93c5fd', 400: '#60a5fa', 500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8', 800: '#1e40af', 900: '#1e3a8a' },
+            slate: { 50: '#f8fafc', 100: '#f1f5f9' }
+          },
+          fontFamily: {
+            sans: ['DM Sans', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    .floating { animation: floating 3s ease-in-out infinite; }
+    @keyframes floating {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    .chat-window::-webkit-scrollbar { width: 6px; }
+    .chat-window::-webkit-scrollbar-track { background: transparent; }
+    .chat-window::-webkit-scrollbar-thumb { background-color: #d1d5db; border-radius: 20px; border: 3px solid transparent; }
+
+    /* NOVO: Estilo para o texto de CTA simples */
+    .simple-chat-cta {
+      position: fixed;
+      bottom: 5.5rem; 
+      right: 5rem;
+      color: #1e40af; /* primary-800 */
+      font-weight: 600;
+      font-size: 1.1rem;
+      z-index: 999;
+      pointer-events: none;
+      text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9);
+      animation: bounce-cta 2s ease-in-out infinite;
+    }
+
+    @keyframes bounce-cta {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+  </style>
 </head>
-<body class="bg-gray-100 font-sans">
+<body class="font-sans bg-slate-50 text-gray-800">
 
   <div id="n8n-chat"></div>
 
-  <div class="container mx-auto p-4 sm:p-8">
-    <header class="mb-8 flex flex-col sm:flex-row justify-between items-start sm:items-center">
-      <div>
-        <h1 class="text-3xl font-bold text-gray-800">Explore o Conhecimento da SacadaEdu</h1>
-        <p class="text-gray-600 mt-2">Use o widget no canto inferior direito para conversar com o Edu, nosso assistente de IA.</p>
-      </div>
-      <a href="{{ url_for('home') }}" class="mt-4 sm:mt-0 bg-primary-600 hover:bg-primary-500 text-white font-semibold py-2 px-4 rounded-lg shadow transition-colors">
-        &larr; Voltar para a página principal
+  <header class="container mx-auto px-6 pt-8">
+      <a href="/" class="text-primary-600 hover:text-primary-800 font-semibold transition-colors inline-flex items-center">
+          <i class="fas fa-arrow-left mr-2"></i>
+          Voltar para a página principal
       </a>
-    </header>
+  </header>
 
-    <div class="bg-white rounded-lg shadow p-8 md:p-12">
-      <div class="text-center">
-        <h2 class="text-2xl font-bold mb-2">Converse com quem sabe tudo sobre a nossa escola.</h2>
-        <p class="text-gray-600 max-w-3xl mx-auto">
-          O assistente virtual **Edu** foi treinado com o nosso **Guia Mestre e Regimento Interno completo**. Ele não dá respostas genéricas: ele encontra informações precisas sobre nossa pedagogia, regras, rotinas, taxas e eventos.
-          <br><br>
-          A precisão dele depende da sua pergunta. **Quanto mais específico você for, mais inteligente ele parecerá.**
-        </p>
-      </div>
-
-      <div class="mt-10 pt-10 border-t border-gray-200">
-        <h3 class="text-2xl font-bold text-gray-800 mb-8 text-center">Desafie o Edu. Surpreenda-se com as respostas.</h3>
-        
-        <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
-          Esqueça as perguntas óbvias. Teste o verdadeiro poder da nossa IA fazendo perguntas detalhadas que você faria se estivesse em uma reunião com nosso diretor. Aqui estão algumas ideias para você começar:
-        </p>
-        
-        <div class="grid md:grid-cols-2 gap-x-8 gap-y-6 max-w-5xl mx-auto text-left">
-          
-          <div class="bg-blue-50 border border-blue-200 p-6 rounded-lg shadow-sm">
-            <h4 class="font-semibold text-lg text-blue-900 mb-3">Para famílias que pensam nos detalhes:</h4>
-            <ul class="list-disc list-inside space-y-2 text-gray-700">
-              <li>Qual o procedimento exato da escola se meu filho tiver febre durante a aula?</li>
-              <li>Meu filho é alérgico a glúten. Como o restaurante da escola gerencia as restrições alimentares?</li>
-              <li>O que acontece se um aluno for pego plagiando um trabalho da internet?</li>
-              <li>Além do desconto para irmãos, existe algum programa de desconto por fidelidade?</li>
-            </ul>
+  <div class="container mx-auto px-6 py-8 md:py-12">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      
+      <div class="flex justify-center">
+        <div class="relative w-full max-w-md floating">
+          <div class="bg-white rounded-2xl shadow-2xl border overflow-hidden">
+            <div class="bg-primary-600 p-3 text-white flex items-center">
+              <div class="flex-shrink-0">
+                <img src="https://i.ibb.co/6yT0kS2/sacadaedu-logo-icon.png" alt="Avatar do Edu" class="rounded-full w-9 h-9 border-2 border-primary-700">
+              </div>
+              <div class="ml-3 leading-tight">
+                <p class="font-semibold">Assistente Edu</p>
+                <p class="text-xs opacity-80">Online</p>
+              </div>
+            </div>
+            <div class="p-4 space-y-4 flex flex-col h-96 overflow-y-auto chat-window">
+              <div class="flex justify-end">
+                <div class="bg-primary-100 rounded-lg p-3 text-sm text-primary-900 max-w-[85%]">
+                  <p>Olá! Gostaria de entender como funciona o processo de matrícula na SacadaEdu.</p>
+                </div>
+              </div>
+              <div class="bg-gray-100 rounded-lg p-3 text-sm text-gray-800 max-w-[90%] self-start">
+                  <p class="font-semibold mb-2">Olá! Claro. Nosso processo de matrícula é desenhado em 6 passos...</p>
+              </div>
+              <div class="flex justify-end">
+                <div class="bg-primary-100 rounded-lg p-3 text-sm text-primary-900 max-w-[85%]">
+                    <p>Sim, por favor. Qual a documentação necessária?</p>
+                </div>
+              </div>
+              <div class="bg-gray-100 rounded-lg p-3 text-sm text-gray-800 max-w-[90%] self-start">
+                <p class="font-semibold mb-2">Claro, a documentação é a seguinte...</p>
+              </div>
+            </div>
+            <div class="border-t p-3 bg-gray-50">
+                <div class="flex items-center bg-gray-200 rounded-full px-4 py-2">
+                    <input type="text" placeholder="Converse com o Edu..." class="bg-transparent border-none focus:outline-none focus:ring-0 w-full text-sm placeholder:text-gray-500 cursor-not-allowed" disabled>
+                    <i class="fas fa-paper-plane text-primary-600 ml-2"></i>
+                </div>
+            </div>
           </div>
-
-          <div class="bg-green-50 border border-green-200 p-6 rounded-lg shadow-sm">
-            <h4 class="font-semibold text-lg text-green-900 mb-3">Para entender a fundo nossa proposta:</h4>
-            <ul class="list-disc list-inside space-y-2 text-gray-700">
-              <li>Como a linha pedagógica "sociointeracionista" se aplica na prática na rotina do Ensino Fundamental I?</li>
-              <li>O que é exatamente a "Sala Maker" e que tipo de projetos são feitos lá?</li>
-              <li>Quem é o Coordenador de Tecnologia Educacional e qual a sua função?</li>
-              <li>Qual o nome do projeto de voluntariado da escola e como os alunos participam?</li>
-            </ul>
-          </div>
-
-          <div class="bg-yellow-50 border border-yellow-200 p-6 rounded-lg shadow-sm md:col-span-2">
-            <h4 class="font-semibold text-lg text-yellow-900 mb-3">Para os alunos (ou pais) mais curiosos:</h4>
-            <ul class="list-disc list-inside space-y-2 text-gray-700">
-              <li>É permitido usar boné dentro da sala de aula?</li>
-              <li>Além dos esportes, quais atividades extracurriculares culturais, como clube do livro, são oferecidas?</li>
-              <li>É permitido aos pais filmar a apresentação dos filhos na Festa Junina?</li>
-            </ul>
-          </div>
-          <div class="bg-purple-50 border border-purple-200 p-6 rounded-lg shadow-sm">
-            <h4 class="font-semibold text-lg text-purple-900 mb-3">Interessado em Matrículas?</h4>
-            <ul class="list-disc list-inside space-y-2 text-gray-700">
-              <li>Qual o valor da mensalidade para o 5º ano?</li>
-              <li>Quais documentos são necessários para a matrícula?</li>
-              <li>Podemos agendar uma visita para conhecer a escola?</li>
-              <li>Até quando vão as inscrições para o próximo ano letivo?</li>
-            </ul>
-          </div>
-
-          <div class="bg-teal-50 border border-teal-200 p-6 rounded-lg shadow-sm">
-            <h4 class="font-semibold text-lg text-teal-900 mb-3">Dúvidas Frequentes:</h4>
-            <ul class="list-disc list-inside space-y-2 text-gray-700">
-              <li>Qual o endereço completo da escola?</li>
-              <li>Quem é o professor(a) do 3º ano B?</li>
-              <li>Qual o horário de entrada e saída do Ensino Médio?</li>
-              <li>Como faço para justificar a falta de um aluno?</li>
-            </ul>
-          </div>
-      </div>
-
         </div>
-        
-
-      <div class="mt-12 text-center">
-        <p class="text-2xl font-light text-gray-800">Agora é sua vez.</p>
-        <p class="text-gray-700 mt-2">Clique no ícone de chat <i class="fas fa-comments text-primary-600"></i> no canto da tela e coloque a inteligência do Edu à prova!</p>
       </div>
+      
+      <div>
+    <span class="inline-block px-4 py-1 bg-primary-100 text-primary-700 rounded-full text-sm font-semibold mb-4">ASSISTENTE VIRTUAL</span>
+    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">Respostas claras, famílias seguras.</h1>
+    <p class="text-lg text-gray-600 mb-10">
+      Nosso assistente de IA, o Edu, foi treinado para fornecer informações precisas sobre todos os aspectos da nossa escola. Teste seu conhecimento com algumas das perguntas abaixo ou seja criativo!
+    </p>
+    
+    <div class="space-y-3">
+        <div class="bg-white p-4 rounded-lg border border-gray-200 flex items-center gap-4 hover:border-primary-500 hover:shadow-sm transition-all cursor-pointer">
+            <i class="fas fa-graduation-cap text-primary-600 w-6 text-center"></i>
+            <span>Qual o método pedagógico da escola?</span>
+        </div>
+        <div class="bg-white p-4 rounded-lg border border-gray-200 flex items-center gap-4 hover:border-primary-500 hover:shadow-sm transition-all cursor-pointer">
+            <i class="fas fa-chalkboard-user text-primary-600 w-6 text-center"></i>
+            <span>Quem são os professores da escola?</span>
+        </div>
+        <div class="bg-white p-4 rounded-lg border border-gray-200 flex items-center gap-4 hover:border-primary-500 hover:shadow-sm transition-all cursor-pointer">
+            <i class="fas fa-notes-medical text-primary-600 w-6 text-center"></i>
+            <span>Qual o procedimento se meu filho tiver febre?</span>
+        </div>
+        <div class="bg-white p-4 rounded-lg border border-gray-200 flex items-center gap-4 hover:border-primary-500 hover:shadow-sm transition-all cursor-pointer">
+            <i class="fas fa-calendar-alt text-primary-600 w-6 text-center"></i>
+            <span>Qual o horário de entrada e saída?</span>
+        </div>
+        <div class="bg-white p-4 rounded-lg border border-gray-200 flex items-center gap-4 hover:border-primary-500 hover:shadow-sm transition-all cursor-pointer">
+            <i class="fas fa-puzzle-piece text-primary-600 w-6 text-center"></i>
+            <span>Quais atividades extracurriculares são oferecidas?</span>
+        </div>
     </div>
+        <div class="flex items-start gap-4 mt-6">
+            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center">
+                <i class="fas fa-plus text-xl text-primary-600"></i>
+            </div>
+            <div>
+                <h3 class="font-bold text-lg text-gray-800">Seja criativo! Pergunte sobre:</h3>
+                <div class="flex flex-wrap gap-2 mt-3">
+                    <span class="bg-slate-200 text-slate-700 text-sm font-medium px-3 py-1 rounded-full">Rotina</span>
+                    <span class="bg-slate-200 text-slate-700 text-sm font-medium px-3 py-1 rounded-full">Alimentação</span>
+                    <span class="bg-slate-200 text-slate-700 text-sm font-medium px-3 py-1 rounded-full">Regimento Escolar</span>
+                    <span class="bg-slate-200 text-slate-700 text-sm font-medium px-3 py-1 rounded-full">Matrícula</span>
+                    <span class="bg-slate-200 text-slate-700 text-sm font-medium px-3 py-1 rounded-full">Sala de Aula</span>
+                    <span class="bg-slate-200 text-slate-700 text-sm font-medium px-3 py-1 rounded-full">Calendário</span>
+                    <span class="bg-slate-200 text-slate-700 text-sm font-medium px-3 py-1 rounded-full">e muito mais...</span>
+                </div>
+            </div>
+        </div>
+    
+</div>
+    </div>
+  </div>
 
+  <div class="simple-chat-cta">
+    <p>Edu, aqui &rarr;</p>
   </div>
 
 </body>
