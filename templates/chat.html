@@ -19,7 +19,7 @@
       target: '#n8n-chat',
       mode: 'window',
       showWelcomeScreen: false,
-      initialMessages: ['Olá'],
+      initialMessages: ['Olá!'],
       bot: { name: 'Edu', avatar: 'https://i.ibb.co/6yT0kS2/sacadaedu-logo-icon.png' },
       i18n: { 'pt-BR': { title: 'Assistente Edu', subtitle: 'Online', inputPlaceholder: 'Digite sua dúvida aqui...' } },
       chatInputKey: 'chatInput',
@@ -27,6 +27,7 @@
       loadPreviousSession: true,
       metadata: {},
       defaultLanguage: 'pt-BR',
+      // O objeto 'theme' foi removido daqui
     });
   </script>
 
@@ -56,7 +57,6 @@
     .chat-window::-webkit-scrollbar-track { background: transparent; }
     .chat-window::-webkit-scrollbar-thumb { background-color: #d1d5db; border-radius: 20px; border: 3px solid transparent; }
 
-    /* NOVO: Estilo para o texto de CTA simples */
     .simple-chat-cta {
       position: fixed;
       bottom: 5.5rem; 
@@ -69,11 +69,46 @@
       text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9);
       animation: bounce-cta 2s ease-in-out infinite;
     }
-
     @keyframes bounce-cta {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-8px); }
     }
+
+    /* ================================================================ */
+    /* NOVA REGRA DE CSS PARA FORÇAR AS CORES NO CHAT */
+    /* ================================================================ */
+    :root {
+    /* Cores Globais e do Header */
+    --chat--header--background: #2563eb; /* Topo azul */
+    --chat--header--color: #ffffff;       /* Fonte branca */
+    --chat--header--border-bottom: none; /* Sem borda inferior para um visual mais limpo */
+    --chat--body--background: #FFFFFF;
+    --chat--footer--background: #FFFFFF;
+
+    /* Janela e Bordas */
+    --chat--border-radius: 1.0rem;
+    --chat--window--width: 400px;
+    --chat--window--height: 600px;
+
+    /* Campo de Digitação (Textarea) */
+    --chat--input--border-radius: 0.75rem; /* Remove o formato oval */
+    --chat--input--border: 1px solid #d1d5db; /* Borda cinza sutil */
+    --chat--textarea--height: 50px;
+    --chat--input--send--button--background: transparent;
+
+    /* Balões de Mensagem */
+    --chat--message--bot--background: #f1f5f9;    /* Fundo cinza claro para o bot */
+    --chat--message--bot--color: #1f2937;         /* Texto escuro para o bot */
+    --chat--message--bot--border: 1px solid #e5e7eb;
+    --chat--message--user--background: #dbeafe;   /* Fundo azul claro para o usuário */
+    --chat--message--user--color: #1e40af;        /* Texto azul escuro para o usuário */
+    --chat--message--user--border: none;
+
+    /* Outras Cores */
+    --chat--color-primary: #2563eb; /* Cor principal para botões de resposta e links */
+    --chat--color-dark: #1d4ed8;    /* Cor para hover */
+}
+    /* ================================================================ */
   </style>
 </head>
 <body class="font-sans bg-slate-50 text-gray-800">
@@ -131,53 +166,54 @@
       </div>
       
       <div>
-    <span class="inline-block px-4 py-1 bg-primary-100 text-primary-700 rounded-full text-sm font-semibold mb-4">ASSISTENTE VIRTUAL</span>
-    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">Respostas claras, famílias seguras.</h1>
-    <p class="text-lg text-gray-600 mb-10">
-      Nosso assistente de IA, o Edu, foi treinado para fornecer informações precisas sobre todos os aspectos da nossa escola. Teste seu conhecimento com algumas das perguntas abaixo ou seja criativo!
-    </p>
-    
-    <div class="space-y-3">
-        <div class="bg-white p-4 rounded-lg border border-gray-200 flex items-center gap-4 hover:border-primary-500 hover:shadow-sm transition-all cursor-pointer">
-            <i class="fas fa-graduation-cap text-primary-600 w-6 text-center"></i>
-            <span>Qual o método pedagógico da escola?</span>
-        </div>
-        <div class="bg-white p-4 rounded-lg border border-gray-200 flex items-center gap-4 hover:border-primary-500 hover:shadow-sm transition-all cursor-pointer">
-            <i class="fas fa-chalkboard-user text-primary-600 w-6 text-center"></i>
-            <span>Quem são os professores da escola?</span>
-        </div>
-        <div class="bg-white p-4 rounded-lg border border-gray-200 flex items-center gap-4 hover:border-primary-500 hover:shadow-sm transition-all cursor-pointer">
-            <i class="fas fa-notes-medical text-primary-600 w-6 text-center"></i>
-            <span>Qual o procedimento se meu filho tiver febre?</span>
-        </div>
-        <div class="bg-white p-4 rounded-lg border border-gray-200 flex items-center gap-4 hover:border-primary-500 hover:shadow-sm transition-all cursor-pointer">
-            <i class="fas fa-calendar-alt text-primary-600 w-6 text-center"></i>
-            <span>Qual o horário de entrada e saída?</span>
-        </div>
-        <div class="bg-white p-4 rounded-lg border border-gray-200 flex items-center gap-4 hover:border-primary-500 hover:shadow-sm transition-all cursor-pointer">
-            <i class="fas fa-puzzle-piece text-primary-600 w-6 text-center"></i>
-            <span>Quais atividades extracurriculares são oferecidas?</span>
-        </div>
-    </div>
-        <div class="flex items-start gap-4 mt-6">
-            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center">
-                <i class="fas fa-plus text-xl text-primary-600"></i>
+        <span class="inline-block px-4 py-1 bg-primary-100 text-primary-700 rounded-full text-sm font-semibold mb-4">ASSISTENTE VIRTUAL</span>
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">Respostas claras, famílias seguras.</h1>
+        <p class="text-lg text-gray-600 mb-10">
+          Nosso assistente de IA, o Edu, foi treinado para fornecer informações precisas sobre todos os aspectos da nossa escola. Teste seu conhecimento com algumas das perguntas abaixo ou seja criativo!
+        </p>
+        
+        <div class="space-y-3">
+            <div class="bg-white p-4 rounded-lg border border-gray-200 flex items-center gap-4 hover:border-primary-500 hover:shadow-sm transition-all cursor-pointer">
+                <i class="fas fa-graduation-cap text-primary-600 w-6 text-center"></i>
+                <span>Qual o método pedagógico da escola?</span>
             </div>
-            <div>
-                <h3 class="font-bold text-lg text-gray-800">Seja criativo! Pergunte sobre:</h3>
-                <div class="flex flex-wrap gap-2 mt-3">
-                    <span class="bg-slate-200 text-slate-700 text-sm font-medium px-3 py-1 rounded-full">Rotina</span>
-                    <span class="bg-slate-200 text-slate-700 text-sm font-medium px-3 py-1 rounded-full">Alimentação</span>
-                    <span class="bg-slate-200 text-slate-700 text-sm font-medium px-3 py-1 rounded-full">Regimento Escolar</span>
-                    <span class="bg-slate-200 text-slate-700 text-sm font-medium px-3 py-1 rounded-full">Matrícula</span>
-                    <span class="bg-slate-200 text-slate-700 text-sm font-medium px-3 py-1 rounded-full">Sala de Aula</span>
-                    <span class="bg-slate-200 text-slate-700 text-sm font-medium px-3 py-1 rounded-full">Calendário</span>
-                    <span class="bg-slate-200 text-slate-700 text-sm font-medium px-3 py-1 rounded-full">e muito mais...</span>
+            <div class="bg-white p-4 rounded-lg border border-gray-200 flex items-center gap-4 hover:border-primary-500 hover:shadow-sm transition-all cursor-pointer">
+                <i class="fas fa-chalkboard-user text-primary-600 w-6 text-center"></i>
+                <span>Quem são os professores da escola?</span>
+            </div>
+            <div class="bg-white p-4 rounded-lg border border-gray-200 flex items-center gap-4 hover:border-primary-500 hover:shadow-sm transition-all cursor-pointer">
+                <i class="fas fa-notes-medical text-primary-600 w-6 text-center"></i>
+                <span>Qual o procedimento se meu filho tiver febre?</span>
+            </div>
+            <div class="bg-white p-4 rounded-lg border border-gray-200 flex items-center gap-4 hover:border-primary-500 hover:shadow-sm transition-all cursor-pointer">
+                <i class="fas fa-calendar-alt text-primary-600 w-6 text-center"></i>
+                <span>Qual o horário de entrada e saída?</span>
+            </div>
+            <div class="bg-white p-4 rounded-lg border border-gray-200 flex items-center gap-4 hover:border-primary-500 hover:shadow-sm transition-all cursor-pointer">
+                <i class="fas fa-puzzle-piece text-primary-600 w-6 text-center"></i>
+                <span>Quais atividades extracurriculares são oferecidas?</span>
+            </div>
+        </div>
+        <div class="mt-8 pt-8 border-t border-gray-200">
+            <div class="flex items-start gap-4">
+                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center">
+                    <i class="fas fa-plus text-xl text-primary-600"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg text-gray-800">Seja criativo! Pergunte sobre:</h3>
+                    <div class="flex flex-wrap gap-2 mt-3">
+                        <span class="bg-slate-200 text-slate-700 text-sm font-medium px-3 py-1 rounded-full">Rotina</span>
+                        <span class="bg-slate-200 text-slate-700 text-sm font-medium px-3 py-1 rounded-full">Alimentação</span>
+                        <span class="bg-slate-200 text-slate-700 text-sm font-medium px-3 py-1 rounded-full">Regimento Escolar</span>
+                        <span class="bg-slate-200 text-slate-700 text-sm font-medium px-3 py-1 rounded-full">Matrícula</span>
+                        <span class="bg-slate-200 text-slate-700 text-sm font-medium px-3 py-1 rounded-full">Sala de Aula</span>
+                        <span class="bg-slate-200 text-slate-700 text-sm font-medium px-3 py-1 rounded-full">Calendário</span>
+                        <span class="bg-slate-200 text-slate-700 text-sm font-medium px-3 py-1 rounded-full">e muito mais...</span>
+                    </div>
                 </div>
             </div>
         </div>
-    
-</div>
+      </div>
     </div>
   </div>
 
