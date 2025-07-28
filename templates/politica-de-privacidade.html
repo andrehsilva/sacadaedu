@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidade - SacadaEdu</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { 50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 300: '#93c5fd', 400: '#60a5fa', 500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8', 800: '#1e40af', 900: '#1e3a8a' },
+                    },
+                    fontFamily: {
+                        sans: ['DM Sans', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        .section-link.active {
+            color: #2563eb;
+            font-weight: 700;
+            border-left-color: #2563eb;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 font-sans text-slate-700">
+
+    <header class="bg-white shadow-sm sticky top-0 z-20">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-slate-800">Política de Privacidade</h1>
+            <a href="{{ url_for('home') }}" class="text-sm font-semibold text-primary-600 hover:text-primary-800 transition-colors">&larr; Voltar ao site principal</a>
+        </div>
+    </header>
+
+    <div class="container mx-auto px-6 py-12 md:py-16">
+        <div class="flex flex-col lg:flex-row gap-12 lg:gap-16">
+
+            <aside class="w-full lg:w-1/4 lg:sticky lg:top-28 self-start">
+                <nav>
+                    <h3 class="font-bold text-slate-800 mb-4">Navegue pelas seções</h3>
+                    <ul id="toc" class="space-y-2">
+                        <li><a href="#introducao" class="section-link block text-slate-600 hover:text-primary-600 transition-colors border-l-2 border-transparent pl-4 py-1">1. Introdução</a></li>
+                        <li><a href="#papeis" class="section-link block text-slate-600 hover:text-primary-600 transition-colors border-l-2 border-transparent pl-4 py-1">2. Nosso Papel</a></li>
+                        <li><a href="#dados-coletados" class="section-link block text-slate-600 hover:text-primary-600 transition-colors border-l-2 border-transparent pl-4 py-1">3. Dados Coletados</a></li>
+                        <li><a href="#finalidade" class="section-link block text-slate-600 hover:text-primary-600 transition-colors border-l-2 border-transparent pl-4 py-1">4. Finalidade dos Dados</a></li>
+                        <li><a href="#cookies" class="section-link block text-slate-600 hover:text-primary-600 transition-colors border-l-2 border-transparent pl-4 py-1">5. Cookies</a></li>
+                        <li><a href="#compartilhamento" class="section-link block text-slate-600 hover:text-primary-600 transition-colors border-l-2 border-transparent pl-4 py-1">6. Compartilhamento</a></li>
+                        <li><a href="#seguranca" class="section-link block text-slate-600 hover:text-primary-600 transition-colors border-l-2 border-transparent pl-4 py-1">7. Segurança e Prazo</a></li>
+                        <li><a href="#seus-direitos" class="section-link block text-slate-600 hover:text-primary-600 transition-colors border-l-2 border-transparent pl-4 py-1">8. Seus Direitos</a></li>
+                        <li><a href="#contato" class="section-link block text-slate-600 hover:text-primary-600 transition-colors border-l-2 border-transparent pl-4 py-1">9. Contato</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <main class="w-full lg:w-3/4 space-y-10 prose prose-slate max-w-none">
+                <section id="introducao">
+                    <p class="text-sm text-slate-500">Última atualização: 28 de julho de 2025</p>
+                    <h2 class="text-3xl font-bold text-slate-900">1. Introdução</h2>
+                    <p>A sua privacidade e a segurança dos seus dados são de extrema importância para a <strong>SacadaEdu</strong>. Esta Política de Privacidade descreve como nós coletamos, usamos, compartilhamos e protegemos as informações pessoais fornecidas por visitantes do nosso site, em conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018).</p>
+                    <p>Ao utilizar nossos serviços ou nos fornecer suas informações, você declara estar ciente do conteúdo desta política.</p>
+                </section>
+
+                <section id="papeis">
+                    <h2 class="text-3xl font-bold text-slate-900">2. Nosso Papel no Tratamento de Dados</h2>
+                    <p>É importante esclarecer que a <strong>SacadaEdu</strong> atua como <strong>Controladora</strong> dos dados pessoais coletados diretamente em nosso site (www.sacadaedu.com.br), conforme descrito nesta política.</p>
+                    <p>Quando nossas soluções são utilizadas por uma instituição de ensino cliente, a <strong>SacadaEdu</strong> atua como <strong>Operadora</strong> de dados pessoais. Nesse cenário, a instituição de ensino é a Controladora, sendo dela a responsabilidade de definir as finalidades e garantir a legalidade do tratamento dos dados de seus alunos, pais e colaboradores.</p>
+                </section>
+
+                <section id="dados-coletados">
+                    <h2 class="text-3xl font-bold text-slate-900">3. Quais Dados Coletamos?</h2>
+                    <p>A SacadaEdu coleta apenas os seguintes dados pessoais em seu site:</p>
+                    <ul>
+                        <li><strong>Dados Fornecidos Voluntariamente:</strong> Nome, e-mail e telefone, fornecidos por você ao preencher nossos formulários de contato ou interagir com nosso assistente virtual.</li>
+                        <li><strong>Dados de Navegação (Cookies):</strong> Informações como endereço IP, tipo de navegador, páginas visitadas e tempo de permanência. Para mais detalhes, veja nossa seção sobre Cookies.</li>
+                    </ul>
+                </section>
+
+                <section id="finalidade">
+                    <h2 class="text-3xl font-bold text-slate-900">4. Para Qual Finalidade Utilizamos Seus Dados?</h2>
+                    <p>Os dados coletados no site da SacadaEdu são utilizados para:</p>
+                    <ul>
+                        <li>Responder a dúvidas e fornecer informações sobre nossos serviços.</li>
+                        <li>Entrar em contato com leads interessados em nossas soluções.</li>
+                        <li>Melhorar a experiência de navegação e a segurança do nosso site.</li>
+                    </ul>
+                    <p>A base legal para esse tratamento é o <strong>consentimento do titular</strong> (art. 7º, I) ao preencher nossos formulários e o <strong>legítimo interesse</strong> da SacadaEdu (art. 7º, IX) para a análise de navegação, conforme previsto na LGPD.</p>
+                </section>
+                
+                <section id="cookies">
+                    <h2 class="text-3xl font-bold text-slate-900">5. Sobre o Uso de Cookies</h2>
+                     <p>Utilizamos cookies para otimizar o funcionamento do nosso site. Eles se dividem em:</p>
+                    <ul>
+                        <li><strong>Cookies Essenciais:</strong> Necessários para que o site funcione corretamente.</li>
+                        <li><strong>Cookies Analíticos:</strong> Nos ajudam a entender como os visitantes interagem com o site, coletando informações de forma anônima para nos ajudar a melhorar nossos serviços (ex: Google Analytics).</li>
+                    </ul>
+                    <p>Você pode gerenciar ou desativar os cookies através das configurações do seu navegador.</p>
+                </section>
+
+                <section id="compartilhamento">
+                    <h2 class="text-3xl font-bold text-slate-900">6. Com Quem Compartilhamos Seus Dados?</h2>
+                    <p>Nós não vendemos ou alugamos seus dados pessoais. O compartilhamento ocorre somente com prestadores de serviços essenciais para nossa operação (como hospedagem, ferramentas de marketing ou análise), sempre sob contratos que garantem a segurança e o tratamento adequado de seus dados.</p>
+                    <div class="mt-4 p-4 bg-slate-100 border-l-4 border-primary-500 text-slate-800">
+                        <strong class="font-bold">Transferência Internacional de Dados:</strong> Para a execução de alguns desses serviços, podemos utilizar ferramentas cujos servidores estão fora do Brasil. Nesses casos, garantimos que a transferência ocorra apenas para parceiros que comprovem estar em conformidade com as leis de proteção de dados aplicáveis.
+                    </div>
+                </section>
+
+                <section id="seguranca">
+                    <h2 class="text-3xl font-bold text-slate-900">7. Segurança e Prazo de Armazenamento</h2>
+                    <p>Adotamos medidas técnicas e administrativas para proteger seus dados pessoais contra acessos não autorizados. Os dados de leads e contatos são armazenados apenas pelo tempo necessário para cumprir as finalidades informadas, ou por um período máximo de 24 meses de inatividade, podendo ser eliminados a qualquer momento mediante sua solicitação.</p>
+                </section>
+
+                <section id="seus-direitos">
+                    <h2 class="text-3xl font-bold text-slate-900">8. Quais são os Seus Direitos como Titular dos Dados?</h2>
+                    <p>Você tem os seguintes direitos garantidos pela LGPD e pode exercê-los a qualquer momento:</p>
+                    <ul>
+                        <li>Confirmação da existência de tratamento.</li>
+                        <li>Acesso aos dados.</li>
+                        <li>Correção de dados incompletos ou desatualizados.</li>
+                        <li>Eliminação de dados tratados em desconformidade com a lei ou mediante revogação do consentimento.</li>
+                        <li>Portabilidade dos dados.</li>
+                        <li>Revogação do consentimento.</li>
+                    </ul>
+                </section>
+
+                <section id="contato">
+                    <h2 class="text-3xl font-bold text-slate-900">9. Como Exercer Seus Direitos?</h2>
+                    <p>Para exercer seus direitos, ou para tirar qualquer dúvida sobre esta política, entre em contato com nosso Encarregado pela Proteção de Dados (DPO):</p>
+                    <p class="text-center font-semibold text-lg bg-slate-100 p-4 rounded-lg">
+                        <a href="mailto:privacidade@sacadaedu.com.br" class="text-primary-600 hover:underline">privacidade@sacadaedu.com.br</a>
+                    </p>
+            
+                    <h3 class="text-xl font-bold text-slate-900 mt-8">Identificação do Controlador</h3>
+                    <p>Para todos os fins desta Política de Privacidade, a pessoa jurídica responsável pelo tratamento de dados (Controladora) é:</p>
+                    <div class="mt-4 p-4 bg-slate-100 border rounded-lg text-slate-800">
+                        <p><strong>Nome Fantasia:</strong> SacadaEdu</p>
+                        <p><strong>CNPJ:</strong> 61.855.033/0001-08</p>
+                    </div>
+                   
+                    
+                </section>
+            </main>
+
+        </div>
+    </div>
+
+    <div id="consent-banner" class="fixed bottom-0 left-0 right-0 bg-slate-800 text-white p-4 shadow-lg z-50 transform translate-y-full transition-transform duration-500 ease-in-out">
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <p class="text-sm text-slate-300">
+                <i class="fas fa-cookie-bite mr-2"></i>Este site utiliza cookies para melhorar sua experiência. Ao continuar, você concorda com a nossa <a href="#" class="font-semibold text-white underline hover:text-primary-300">Política de Privacidade</a>.
+            </p>
+            <button id="accept-consent" class="flex-shrink-0 bg-primary-600 hover:bg-primary-700 text-white font-bold py-2 px-6 rounded-lg shadow-md transition-all">
+                Entendi e aceito
+            </button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const consentBanner = document.getElementById('consent-banner');
+            const acceptButton = document.getElementById('accept-consent');
+
+            if (consentBanner && acceptButton) {
+                if (localStorage.getItem('privacyConsent') !== 'true') {
+                    setTimeout(() => {
+                        consentBanner.classList.remove('translate-y-full');
+                    }, 500);
+                }
+                acceptButton.addEventListener('click', () => {
+                    localStorage.setItem('privacyConsent', 'true');
+                    consentBanner.classList.add('translate-y-full');
+                });
+            }
+
+            const sections = document.querySelectorAll('main section');
+            const navLinks = document.querySelectorAll('#toc a');
+
+            const makeActive = (link) => {
+                navLinks.forEach(item => item.classList.remove('active'));
+                const activeLink = document.querySelector(`#toc a[href="#${link}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        makeActive(entry.target.id);
+                    }
+                });
+            }, {
+                rootMargin: '-50% 0px -50% 0px',
+                threshold: 0
+            });
+
+            sections.forEach(section => observer.observe(section));
+        });
+    </script>
+</body>
+</html>

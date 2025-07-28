@@ -53,7 +53,6 @@
       50% { transform: translateY(-10px); }
       100% { transform: translateY(0px); }
     }
-    /* Estilos para a paginação do Swiper adicionados */
     .swiper-pagination-bullet { 
       background-color: #fff; 
       opacity: 0.6; 
@@ -78,7 +77,7 @@
   <header class="bg-white shadow-md sticky top-0 z-50">
   <div class="container mx-auto px-6 py-4 flex items-center justify-between relative">
     
-    <a href="#" class="flex items-center space-x-3">
+    <a href="{{ url_for('home') }}" class="flex items-center space-x-3">
       <div class="bg-primary-600 text-white p-2 rounded-xl shadow-sm">
         <i class="fas fa-lightbulb text-xl"></i>
       </div>
@@ -116,7 +115,7 @@
 <div id="fullscreen-menu" class="fixed inset-0 bg-white z-50 flex flex-col transition-opacity duration-300 ease-in-out opacity-0 pointer-events-none">
   
   <div class="container mx-auto px-6 py-4 flex items-center justify-between">
-    <a href="#" class="flex items-center space-x-3">
+    <a href="{{ url_for('home') }}" class="flex items-center space-x-3">
       <div class="bg-primary-600 text-white p-2 rounded-xl shadow-sm">
         <i class="fas fa-lightbulb text-xl"></i>
       </div>
@@ -458,13 +457,20 @@
                 <input type="email" id="email" name="email" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-600" placeholder="seu@escola.com" required>
                 <span id="email-error" class="text-red-500 text-sm mt-1 hidden">Por favor, insira um e-mail válido.</span>
               </div>
+              
               <div>
-                <button type="submit" class="w-full bg-secondary-500 hover:bg-secondary-600 text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 inline-flex items-center justify-center gap-2">
+                <button type="submit" id="submit-button" class="w-full bg-secondary-500 hover:bg-secondary-600 text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 inline-flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
                   <i class="fab fa-whatsapp"></i>
                   <span>Fale conosco</span>
                 </button>
               </div>
-              <p class="text-gray-500 text-sm text-center">Ao enviar, você concorda com nossa <a href="#" class="text-primary-600 hover:underline">Política de Privacidade</a>.</p>
+
+              <div class="flex items-start">
+                  <input type="checkbox" id="privacy-consent-checkbox" name="privacy-consent" class="h-5 w-5 rounded border-gray-300 text-primary-600 focus:ring-primary-500 mt-0.5">
+                  <label for="privacy-consent-checkbox" class="ml-3 text-sm text-gray-600">
+                      Li e aceito a <a href="{{ url_for('privacy_policy') }}" target="_blank" class="text-primary-600 font-semibold hover:underline">Política de Privacidade</a>.
+                  </label>
+              </div>
             </form>
           </div>
         </div>
@@ -481,9 +487,7 @@
           </div>
       </div>
     </section>
-    <!-- =============================================================== -->
-<!--            NOVA SEÇÃO DE DEMONSTRAÇÃO DO CHATBOT            -->
-<!-- =============================================================== -->
+
     <section id="demo-chatbot" class="bg-primary-50 py-20">
   <div class="container mx-auto px-6">
     <div class="bg-white rounded-2xl shadow-lg p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8">
@@ -529,18 +533,10 @@
         <div>
           <h3 class="text-white text-lg font-semibold mb-4">SacadaEdu</h3>
           <p class="mb-4">IA aplicada à educação com propósito humano.</p>
-          <!-- <div class="flex space-x-4">
-            <a href="#" aria-label="Facebook" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" aria-label="Instagram" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-instagram"></i></a>
-            <a href="#" aria-label="LinkedIn" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" aria-label="YouTube" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-youtube"></i></a>
-          </div> -->
         </div>
         <div>
           <h3 class="text-white text-lg font-semibold mb-4">Links Úteis</h3>
           <ul class="space-y-2">
-            <!-- <li><a href="#" class="hover:text-white transition-colors">Blog</a></li> -->
-            <!-- <li><a href="#" class="hover:text-white transition-colors">Cases de Sucesso</a></li> -->
             <li><a href="#" class="hover:text-white transition-colors">Materiais Gratuitos</a></li>
             <li><a href="#" class="hover:text-white transition-colors">Trabalhe Conosco</a></li>
           </ul>
@@ -555,7 +551,8 @@
         </div>
       </div>
       <div class="border-t border-gray-800 mt-12 pt-8 text-sm text-center">
-        <p>&copy; 2025 SacadaEdu. Todos os direitos reservados.</p>
+        <p class="mb-2">&copy; 2025 SacadaEdu. Todos os direitos reservados.</p>
+        <a href="{{ url_for('privacy_policy') }}" target="_blank" class="text-gray-400 hover:text-white transition-colors">Política de Privacidade</a>
       </div>
     </div>
   </footer>
@@ -587,34 +584,67 @@
     </div>
   </div>
 
+  <div id="consent-banner" class="fixed bottom-0 left-0 right-0 bg-slate-800 text-white p-4 shadow-lg z-50 transform translate-y-full transition-transform duration-500 ease-in-out">
+    <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="text-sm text-slate-300">
+            <i class="fas fa-cookie-bite mr-2"></i>Nosso site utiliza cookies para garantir a melhor experiência. Ao continuar, você concorda com a nossa <a href="{{ url_for('privacy_policy') }}" target="_blank" class="font-semibold text-white underline hover:text-primary-300">Política de Privacidade</a>.
+        </p>
+        <button id="accept-consent" class="flex-shrink-0 bg-primary-600 hover:bg-primary-700 text-white font-bold py-2 px-6 rounded-lg shadow-md transition-all">
+            Entendi e aceito
+        </button>
+    </div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
   <script>
   document.addEventListener('DOMContentLoaded', () => {
 
     // =================================================================
+    // LÓGICA DA BARRA DE CONSENTIMENTO LGPD
+    // =================================================================
+    const consentBanner = document.getElementById('consent-banner');
+    const acceptButton = document.getElementById('accept-consent');
+
+    if (consentBanner && acceptButton) {
+      if (localStorage.getItem('privacyConsent') !== 'true') {
+        setTimeout(() => {
+          consentBanner.classList.remove('translate-y-full');
+        }, 500);
+      }
+      acceptButton.addEventListener('click', () => {
+        localStorage.setItem('privacyConsent', 'true');
+        consentBanner.classList.add('translate-y-full');
+      });
+    }
+
+    // =================================================================
+    // LÓGICA PARA HABILITAR O BOTÃO DO FORMULÁRIO COM CONSENTIMENTO
+    // =================================================================
+    const consentCheckbox = document.getElementById('privacy-consent-checkbox');
+    const submitButton = document.getElementById('submit-button');
+
+    if (consentCheckbox && submitButton) {
+      consentCheckbox.addEventListener('change', () => {
+        submitButton.disabled = !consentCheckbox.checked;
+      });
+    }
+
+    // =================================================================
     // SETUP: Seleção de Elementos do DOM e Configurações Iniciais
     // =================================================================
-
-    // Elementos do Menu Fullscreen (NOVO)
     const menuButton = document.getElementById('mobile-menu-button');
     const fullscreenMenu = document.getElementById('fullscreen-menu');
     const closeMenuButton = document.getElementById('close-menu-button');
-
-    // Elementos do Formulário e Validação
     const contactForm = document.querySelector('#formulario form');
     const whatsappInput = document.getElementById('whatsapp');
     const emailInput = document.getElementById('email');
     const emailError = document.getElementById('email-error');
-
-    // Elementos dos Modais
     const aboutModal = document.getElementById('aboutModal');
     const successModal = document.getElementById('successModal');
     const openAboutModalBtn = document.getElementById('openAboutModalBtn');
     const closeAboutModalBtn = document.getElementById('closeAboutModalBtn');
     const closeSuccessModalBtn = document.getElementById('closeSuccessModalBtn');
-
-    // Elementos do FAQ
     const faqContainer = document.getElementById('faq-container');
     const faqData = [
       { q: 'Mas afinal, o que estou contratando?', a: 'Uma solução personalizada para sua necessidade: consultoria estratégica, automação de processos ou a conexão de ferramentas como Drive, Planilhas e IA, tudo adaptado à realidade da sua escola.' },
@@ -629,76 +659,15 @@
     // FUNÇÕES: Lógica Reutilizável
     // =================================================================
 
-    /** Abre o menu fullscreen */
-    const openFullscreenMenu = () => {
-      if (fullscreenMenu) fullscreenMenu.classList.add('is-open');
-    };
-
-    /** Fecha o menu fullscreen */
-    const closeFullscreenMenu = () => {
-      if (fullscreenMenu) fullscreenMenu.classList.remove('is-open');
-    };
-
-    /** Inicialização do Swiper.js */
-    const initSwiper = () => {
-      new Swiper('.hero-slider', {
-        loop: true,
-        autoplay: { delay: 8000, disableOnInteraction: false, },
-        pagination: { el: '.swiper-pagination', clickable: true, },
-        effect: 'fade',
-        fadeEffect: { crossFade: true },
-      });
-    };
-
-    /** Abre um modal especificado. */
+    const openFullscreenMenu = () => { if (fullscreenMenu) fullscreenMenu.classList.add('is-open'); };
+    const closeFullscreenMenu = () => { if (fullscreenMenu) fullscreenMenu.classList.remove('is-open'); };
+    const initSwiper = () => { new Swiper('.hero-slider', { loop: true, autoplay: { delay: 8000, disableOnInteraction: false, }, pagination: { el: '.swiper-pagination', clickable: true, }, effect: 'fade', fadeEffect: { crossFade: true }, }); };
     const openModal = (modal) => modal.classList.remove('hidden');
-
-    /** Fecha um modal especificado. */
     const closeModal = (modal) => modal.classList.add('hidden');
-
-    /** Alterna a visibilidade de um item do FAQ. */
-    const toggleFaq = (button) => {
-      const content = button.nextElementSibling;
-      const icon = button.querySelector('i');
-      content.classList.toggle('hidden');
-      icon.classList.toggle('fa-chevron-down');
-      icon.classList.toggle('fa-chevron-up');
-    };
-
-    /** Valida o formato de um e-mail. */
-    const validateEmail = (email) => {
-      const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      return re.test(String(email).toLowerCase());
-    };
-
-    /** Aplica a máscara de telefone (XX) XXXXX-XXXX. */
-    const applyPhoneMask = (e) => {
-      let value = e.target.value.replace(/\D/g, '').substring(0, 11);
-      let formattedValue = '';
-      if (value.length > 0) formattedValue = `(${value.substring(0, 2)}`;
-      if (value.length > 2) formattedValue += `) ${value.substring(2, 7)}`;
-      if (value.length > 7) formattedValue += `-${value.substring(7, 11)}`;
-      e.target.value = formattedValue;
-    };
-
-    /** Constrói e insere os itens do FAQ na página. */
-    const buildFaq = () => {
-      if (!faqContainer) return;
-      faqContainer.innerHTML = ''; // Limpa antes de construir para evitar duplicatas
-      faqData.forEach(item => {
-        const faqItem = document.createElement('div');
-        faqItem.className = 'border border-gray-200 rounded-xl overflow-hidden';
-        faqItem.innerHTML = `
-          <button class="faq-toggle w-full flex justify-between items-center p-6 text-left hover:bg-gray-50 transition-colors">
-            <h3 class="text-lg font-semibold">${item.q}</h3>
-            <i class="fas fa-chevron-down text-primary-600 transition-transform"></i>
-          </button>
-          <div class="faq-content hidden px-6 pb-6 pt-0">
-            <p class="text-gray-600">${item.a}</p>
-          </div>`;
-        faqContainer.appendChild(faqItem);
-      });
-    };
+    const toggleFaq = (button) => { const content = button.nextElementSibling; const icon = button.querySelector('i'); content.classList.toggle('hidden'); icon.classList.toggle('fa-chevron-down'); icon.classList.toggle('fa-chevron-up'); };
+    const validateEmail = (email) => { const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/; return re.test(String(email).toLowerCase()); };
+    const applyPhoneMask = (e) => { let value = e.target.value.replace(/\D/g, '').substring(0, 11); let formattedValue = ''; if (value.length > 0) formattedValue = `(${value.substring(0, 2)}`; if (value.length > 2) formattedValue += `) ${value.substring(2, 7)}`; if (value.length > 7) formattedValue += `-${value.substring(7, 11)}`; e.target.value = formattedValue; };
+    const buildFaq = () => { if (!faqContainer) return; faqContainer.innerHTML = ''; faqData.forEach(item => { const faqItem = document.createElement('div'); faqItem.className = 'border border-gray-200 rounded-xl overflow-hidden'; faqItem.innerHTML = `<button class="faq-toggle w-full flex justify-between items-center p-6 text-left hover:bg-gray-50 transition-colors"><h3 class="text-lg font-semibold">${item.q}</h3><i class="fas fa-chevron-down text-primary-600 transition-transform"></i></button><div class="faq-content hidden px-6 pb-6 pt-0"><p class="text-gray-600">${item.a}</p></div>`; faqContainer.appendChild(faqItem); }); };
 
     // =================================================================
     // INICIALIZAÇÃO E EVENT LISTENERS
@@ -707,104 +676,21 @@
     initSwiper();
     buildFaq();
 
-    // Listeners do Menu Fullscreen (NOVO)
     if (menuButton) menuButton.addEventListener('click', openFullscreenMenu);
     if (closeMenuButton) closeMenuButton.addEventListener('click', closeFullscreenMenu);
-    if (fullscreenMenu) {
-      fullscreenMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', closeFullscreenMenu);
-      });
-    }
-
-    // Listener do FAQ
-    if (faqContainer) {
-      faqContainer.addEventListener('click', (e) => {
-        const toggleButton = e.target.closest('.faq-toggle');
-        if (toggleButton) toggleFaq(toggleButton);
-      });
-    }
-
-    // Listeners dos Modais
+    if (fullscreenMenu) { fullscreenMenu.querySelectorAll('a').forEach(link => { link.addEventListener('click', closeFullscreenMenu); }); }
+    if (faqContainer) { faqContainer.addEventListener('click', (e) => { const toggleButton = e.target.closest('.faq-toggle'); if (toggleButton) toggleFaq(toggleButton); }); }
     if (openAboutModalBtn) openAboutModalBtn.addEventListener('click', () => openModal(aboutModal));
     if (closeAboutModalBtn) closeAboutModalBtn.addEventListener('click', () => closeModal(aboutModal));
     if (closeSuccessModalBtn) closeSuccessModalBtn.addEventListener('click', () => closeModal(successModal));
-
-    [aboutModal, successModal].forEach(modal => {
-      if (modal) modal.addEventListener('click', (e) => (e.target === modal) && closeModal(modal));
-    });
-
-    // Listeners do Teclado (ESC para fechar modais e menu)
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        if (fullscreenMenu && fullscreenMenu.classList.contains('is-open')) closeFullscreenMenu();
-        if (aboutModal && !aboutModal.classList.contains('hidden')) closeModal(aboutModal);
-        if (successModal && !successModal.classList.contains('hidden')) closeModal(successModal);
-      }
-    });
-
-    // Listeners do Formulário
+    [aboutModal, successModal].forEach(modal => { if (modal) modal.addEventListener('click', (e) => (e.target === modal) && closeModal(modal)); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { if (fullscreenMenu && fullscreenMenu.classList.contains('is-open')) closeFullscreenMenu(); if (aboutModal && !aboutModal.classList.contains('hidden')) closeModal(aboutModal); if (successModal && !successModal.classList.contains('hidden')) closeModal(successModal); } });
     if(whatsappInput) whatsappInput.addEventListener('input', applyPhoneMask);
-    if(emailInput) {
-        emailInput.addEventListener('blur', (e) => {
-          const email = e.target.value;
-          const isValid = !email || validateEmail(email);
-          emailError.classList.toggle('hidden', isValid);
-          emailInput.classList.toggle('border-red-500', !isValid);
-        });
-    }
-    
-    if (contactForm) {
-      contactForm.addEventListener('submit', function (event) {
-        event.preventDefault();
-        if (!validateEmail(emailInput.value)) {
-            emailError.classList.remove('hidden');
-            emailInput.focus();
-            return;
-        }
-        const formData = new FormData(contactForm);
-        fetch('/submit', { method: 'POST', body: formData })
-          .then(response => response.json())
-          .then(data => {
-            if (data.status === 'success') {
-              contactForm.reset();
-              emailInput.classList.remove('border-red-500');
-              emailError.classList.add('hidden');
-              openModal(successModal);
-            } else {
-              alert(data.message || 'Ocorreu um erro ao enviar. Tente novamente.');
-            }
-          })
-          .catch(error => {
-            console.error('Error:', error);
-            alert('Ocorreu um erro de conexão. Verifique sua internet e tente novamente.');
-          });
-      });
-    }
-      
-    // Listener para Rolagem Suave dos links de âncora
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-
-        if (targetId === '#') {
-          e.preventDefault();
-          window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-          });
-        } 
-        else if (targetElement) {
-          e.preventDefault();
-          targetElement.scrollIntoView({
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
-
+    if(emailInput) { emailInput.addEventListener('blur', (e) => { const email = e.target.value; const isValid = !email || validateEmail(email); emailError.classList.toggle('hidden', isValid); emailInput.classList.toggle('border-red-500', !isValid); }); }
+    if (contactForm) { contactForm.addEventListener('submit', function (event) { event.preventDefault(); if (!validateEmail(emailInput.value)) { emailError.classList.remove('hidden'); emailInput.focus(); return; } const formData = new FormData(contactForm); fetch('/submit', { method: 'POST', body: formData }) .then(response => response.json()) .then(data => { if (data.status === 'success') { contactForm.reset(); emailInput.classList.remove('border-red-500'); emailError.classList.add('hidden'); openModal(successModal); } else { alert(data.message || 'Ocorreu um erro ao enviar. Tente novamente.'); } }) .catch(error => { console.error('Error:', error); alert('Ocorreu um erro de conexão. Verifique sua internet e tente novamente.'); }); }); }
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function (e) { const targetId = this.getAttribute('href'); const targetElement = document.querySelector(targetId); if (targetId === '#') { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); } else if (targetElement) { e.preventDefault(); targetElement.scrollIntoView({ behavior: 'smooth' }); } }); });
   });
-</script>
+  </script>
 
 </body>
 </html>

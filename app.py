@@ -107,6 +107,13 @@ def view_leads():
 def chat_demo():
     """Renderiza a página de demonstração do chat."""
     return render_template('chat.html')
+
+# ================================================================
+@app.route('/politica-de-privacidade')
+def privacy_policy():
+    """Renderiza a página de Política de Privacidade."""
+    return render_template('politica-de-privacidade.html')
+
     
 # 5. Ponto de Entrada para rodar a aplicação (sem o db.create_all())
 if __name__ == '__main__':
