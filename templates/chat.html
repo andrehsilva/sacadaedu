@@ -27,7 +27,6 @@
       loadPreviousSession: true,
       metadata: {},
       defaultLanguage: 'pt-BR',
-      // O objeto 'theme' foi removido daqui
     });
   </script>
 
@@ -57,22 +56,36 @@
     .chat-window::-webkit-scrollbar-track { background: transparent; }
     .chat-window::-webkit-scrollbar-thumb { background-color: #d1d5db; border-radius: 20px; border: 3px solid transparent; }
 
-    .simple-chat-cta {
-      position: fixed;
-      bottom: 5.5rem; 
-      right: 5rem;
-      color: #1e40af; /* primary-800 */
-      font-weight: 600;
-      font-size: 1.1rem;
-      z-index: 999;
-      pointer-events: none;
-      text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9);
-      animation: bounce-cta 2s ease-in-out infinite;
-    }
-    @keyframes bounce-cta {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
+      /* ======================================================= */
+  /* CÓDIGO DE CORREÇÃO PARA O LAYOUT DO CHAT N8N           */
+  /* ======================================================= */
+    
+  /* PASSO 1: Ajusta o contêiner principal do input para alinhar os itens corretamente. */
+  /* Usamos flexbox para garantir que o campo de texto e o botão fiquem na mesma linha. */
+  div[data-v-de5e7961].chat-inputs {
+    display: flex !important;
+    align-items: center !important; /* Alinha verticalmente o campo e o botão */
+    gap: 8px !important; /* Adiciona um pequeno espaço entre o campo e o botão */
+  }
+  
+  /* PASSO 2: Estiliza especificamente o campo de texto do chat. */
+  /* Selecionamos o textarea usando seu atributo único 'data-test-id'. */
+  textarea[data-test-id="chat-input"] {
+    flex-grow: 1 !important; /* Faz o campo de texto ocupar o espaço disponível */
+    border: 1px solid #ccc !important; /* Garante uma borda visível */
+    border-radius: 8px !important; /* Deixa as bordas arredondadas */
+    padding: 10px !important; /* Adiciona um espaçamento interno confortável */
+    height: auto !important; /* Permite que a altura se ajuste ao conteúdo */
+    min-height: 40px !important; /* Define uma altura mínima */
+    resize: none; /* Impede que o usuário redimensione o campo manualmente */
+    box-sizing: border-box !important; /* Garante que padding e borda não aumentem o tamanho total */
+  }
+  
+  /* PASSO 3: Garante que a div que contém os botões (como o de envio) se comporte bem. */
+  div[data-v-de5e7961].chat-inputs-controls {
+      display: flex;
+      align-items: center;
+  }
 
     /* ================================================================ */
     /* NOVA REGRA DE CSS PARA FORÇAR AS CORES NO CHAT */
@@ -112,6 +125,11 @@
   </style>
 </head>
 <body class="font-sans bg-slate-50 text-gray-800">
+
+	<div class="bg-yellow-300 text-yellow-900 text-center p-2 font-semibold shadow-md">
+    <i class="fas fa-exclamation-triangle mr-2"></i>
+    Esta é uma página de demonstração. O chatbot é funcional, mas as informações da escola não são reais.
+  </div>	
 
   <div id="n8n-chat"></div>
 
